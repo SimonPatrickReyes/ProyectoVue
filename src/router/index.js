@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
-import Tienda from '../pages/Tienda.vue'
-import Novedades from '../pages/Novedades.vue'
-import Soporte from '../pages/Soporte.vue'
-import Comunidad from '../pages/Comunidad.vue'
+import Tienda from '../pages/Tienda.vue' 
+
 
 
 const routes = [
@@ -10,7 +8,12 @@ const routes = [
     {path: '/novedades',name: 'Novedades', component: ()=>import('@/pages/Novedades.vue')},
     {path: '/soporte',name: 'Soporte', component:  ()=>import('@/pages/Soporte.vue')},
     {path: '/comunidad',name: 'Comunidad', component:  ()=>import('@/pages/Comunidad.vue')},
-    {path: '/videogames/:id', name: 'videogames.show', component: ()=>import('@/pages/VideogamesShow.vue')}
+    {path: '/videogames/:id', name: 'videogames.show', component: ()=>import('@/pages/VideogamesShow.vue')},
+    {path: '/login', name:'login', component: ()=>import('@/pages/Login.vue')},
+    {path: '/register', name:'register', component: ()=>import('@/pages/Register.vue')}
+
+    
+    
 ]
 
 

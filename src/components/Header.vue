@@ -1,5 +1,6 @@
 <template>
     <header class="header">
+        
         <Navegation></Navegation>
     </header>
 </template>

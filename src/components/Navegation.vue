@@ -1,10 +1,19 @@
-<template><div class="container"> 
+<template>
+  
+<div class="container"> 
+    <div>
     <router-link to="/">Tienda</router-link>    
     <router-link to="/novedades">Novedades</router-link>    
     <router-link to="/soporte">Soporte</router-link>    
     <router-link to="/comunidad">Comunidad</router-link>
 </div>
+<div>
+<router-link to="/login">Log in</router-link>
+<router-link to="/register">Register</router-link>
+</div>
+</div>
 </template>
+
 <script>
     export default{
         name: "Navegation",
