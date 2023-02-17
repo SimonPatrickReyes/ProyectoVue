@@ -2,6 +2,7 @@
     <header class="header">
         
         <Navegation></Navegation>
+        
     </header>
 </template>
 <script>

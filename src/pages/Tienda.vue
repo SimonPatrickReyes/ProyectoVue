@@ -4,7 +4,7 @@
       v-for="game in games"
       :key="game.id" class="tienda">
       <router-link class="tienda_router" :to="{ name: 'videogames.show', params: { id: game.id } }">
-      <img :src=imgSrc(game) alt="videogame.name"> <h3>{{ game.name }}</h3> </router-link><ul><li v-for="tag in game.tags">{{tag}}</li></ul> <h4>{{ game.price+"€" }}</h4>
+      <img :src=imgSrc(game) alt="videogame.name"> <h3>{{ game.name }}</h3> </router-link><ul><li v-for="tag in game.tags"><a href="">{{tag}}</a></li></ul> <h4>{{ game.price+"€" }}</h4>
     </div>
 </template>
 <script>

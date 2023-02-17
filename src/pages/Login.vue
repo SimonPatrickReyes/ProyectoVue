@@ -17,10 +17,6 @@
       </div>
     </div>
     <button type="submit">Sign in</button>
-    <div class="form-links">
-      <a href="#">Forgot your password?</a>
-      <a href="#">Need help?</a>
-    </div>
   </form>
 </div>
 
