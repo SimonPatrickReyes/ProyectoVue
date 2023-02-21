@@ -1,5 +1,6 @@
 <template>
   
+<div></div>
 <div class="nav"> 
     <div class="nav_links">
     <router-link to="/">Tienda</router-link>    
@@ -36,8 +37,14 @@
     border-width: 1rem;
 }
 
-.singIn{
-    display: flex;
+.singIn :hover  {
+    text-shadow: 1px 1px 20px black, 0 0 1em rgb(13, 20, 44), 0 0 0.2em #eee;
+    background-color: rgb(199, 190, 190);
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
 }
 
 .login_register{

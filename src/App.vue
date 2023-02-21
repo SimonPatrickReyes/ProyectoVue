@@ -1,12 +1,16 @@
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import VideogameList from './components/VideogameList.vue'
+import ShoppingCart from './components/ShoppingCart.vue'
 
 export default {
   name: "App",
   components: {
     Header,
     Footer,
+    VideogameList,
+    ShoppingCart
   },
   data() {
     return {
@@ -31,6 +35,8 @@ export default {
   <Header />
   <!--<component :is="currentView" />-->
   <div>
+      <VideogameList/>
+      <ShoppingCart/>
       <RouterView :key="$route.path"/>
   </div>
   <Footer />
