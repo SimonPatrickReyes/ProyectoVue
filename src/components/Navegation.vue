@@ -1,6 +1,4 @@
 <template>
-  
-<div></div>
 <div class="nav"> 
     <div class="nav_links">
     <router-link to="/">Tienda</router-link>    

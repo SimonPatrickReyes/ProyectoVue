@@ -2,11 +2,9 @@
     <div>
         <h1>Videogames List</h1>
         <ul>
-            <li v-for="videogame in videogames">
+            <li v-if="videogames" v-for="videogame in videogames">
                 {{videogame.title}}-{{videogame.price | currency}}-{{videogame.inventory}}
-                <button 
-                :disabled="!videogameIsInStock(videogame)"
-                @click="addVideogameToCart(videogame)"
+                <button @click="addVideogameToCart(videogame)"
                 >Añadir al carrito</button>
             
             </li>
@@ -16,7 +14,6 @@
 
 <script>
 import {mapState,mapGetters,mapActions} from 'vuex'
-import videogames from ''
 import { currency } from '../currency'
 
     export default{
@@ -29,24 +26,30 @@ import { currency } from '../currency'
         
         computed:{
         ...mapState({
-            videogames:state=>state.videogames
+            videogames:state=>state.videogames.items
         }),
         
-        ...mapGetters({
+        ...mapGetters('videogames',{
             videogameIsInStock: 'videogameIsInStock'
         }),
     },
        methods:{
-        ...mapActions({
-            fetchVideogames:'fetchVideogames',
-            addVideogameToCart:'addVideogameToCart'
+        // ...mapActions({
+        //     fetchVideogames:'videogames/fetchVideogames',
+        //     addVideogameToCart:'cart/addVideogameToCart'
+        // }),
+        ...mapActions('videogames',{
+            fetchVideogames:'fetchVideogames'
+        }),
+        ...mapActions('cart',{
+            fetchVideogames:'addVideogameToCart'
         }),
        },
 
-    created(){
+    async created(){
         this.loading= true
-        this.fetchVideogames()
-            .then(()=>this.loading=false)
+        await this.fetchVideogames()
+        .then(()=>this.loading=false)
     }
 
     }

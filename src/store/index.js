@@ -1,101 +1,55 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
+// import Vuex from 'vuex'
+// import Vue from 'vue'
+// import cart from './modules/cart'
+// import videogames from './modules/videogames'
 
-Vue.use(Vuex)
+// Vue.use(Vuex)
 
-export default new Vuex.Store({
- state:{
-    videogames:[],
-    cart:[],
-    checkoutStatus:null
- },
- getters:{
-    availableVideogames(state,getters){
-        return state.videogames.filter(videogame=>videogame.inventory>0)
+// export default new Vuex.Store({
+//     modules: {
+//         cart,
+//         videogames
+//     },
 
+//     state: {
+
+//     },
+
+//     getters: {
+
+//     },
+    
+//     actions: {
+
+//     },
+
+//     mutations: {
+
+//     }
+// })
+
+import { createStore } from 'vuex'
+import cart from './modules/cart'
+import videogames from './modules/videogames'
+
+const store = createStore({
+    modules:{
+        cart,
+        videogames
     },
-    cartVideogames(state){
-        return state.cart.map(cartItem=>{
-            const videogame=state.videogames.find(videogame=>videogame.id===cartItem.id)
-            return{
-                title:videogame.title,
-                price:videogame.price,
-                quantity:videogame.quantity
-            }
-        })
+    state () { //data
+      return{
+        fetchImageURL: "https://api-node.up.railway.app/api/v1/images/"
+      }
     },
-
-    cartTotal(state,getters){
-        return getters.cartVideogames.reduce((total,videogame)=>total+videogame.price*videogame.quantity,0)
-    },
-    videogameIsInStock(){
-        return(videogame)=>{
-            return videogame.inventory>0
-        }
-    }
-
-
-
- },
- actions:{
-    fecthVideogames({commit}){
-        return new Promise((resolve, reject)=>{
-            
+    getters:{ // = computed
         
-        shop.getVideogames(videogames=>{
-            commit('setVideogames',videogames)
-            resolve()
-        })
-      })
     },
- 
+    actions:{
 
- addVideogameToCart({state,getters,commit},videogame){
-    if(getters.videogameIsInStock(videogame)){
-        const cartItem=context.state.cart.find(item=>item.id===videogame.id)
-        if(!cartItem){
-            commit('pushVideogameToCart',videogame.id)
-        }else{
-            commit('incrementItemQuantity',cartItem)
-        }
-        commit('decrementVideogameInventory',videogame)
+    },
+    mutations:{
+        
     }
- },
- checkout({state,commit}){
-    shop.buyVideogame(
-        state.cart,
-        ()=>{
-            commit('emptyCart')
-            commit('setCheckoutStatus','success')
-        },
-        ()=>{
-            commit('setCheckoutStatus','fail')
-        }
-    )
- }
-},
-
- mutations:{
-    setVideogames(state,videogames){
-        state.videogames=videogames
-    },
-    pushVideogameToCart(state,videogameId){
-        state.cart.push({
-            id:videogameId,
-            quantity:1
-        })
-    },
-    incrementItemQuantity(state,cartItem){
-        cartItem.quantity++
-    },
-    decrementVideogameInventory(state,videogame){
-        videogame.inventory--
-    },
-    setCheckoutStatus(state,status){
-        state.checkoutStatus=status
-    },
-    emptyCart(state){
-        state.cart=[]
-    }
-  }
 })
+export default store
