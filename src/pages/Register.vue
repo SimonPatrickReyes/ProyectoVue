@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" required>
+      <input type="text" id="username"  name="username" required>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
       <label for="confirm-password">Confirm password</label>
-      <input type="password" id="confirm-password" name="confirm-password" required>
+      <input type="password" id="confirm_password" name="confirm_password" required>
     </div>
     <div class="form-group">
       <label for="birthdate">Birthdate</label>
@@ -31,8 +31,11 @@
     <button type="submit">Create account</button>
   </form>
 </div>
+</template>
 
-    </template>
+
+
+
     <style>
     .form {
       max-width: 500px;

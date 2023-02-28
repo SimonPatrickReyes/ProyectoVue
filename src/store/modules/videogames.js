@@ -4,6 +4,9 @@ export default{
         items:[]
     },
     getters:{
+        videogames(state){
+            return state.items
+        },
         availableVideogames(state,getters){
             return state.items.filter(videogame=>videogame.inventory>0)
     

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <h1>Videogames List</h1>
         <ul>
@@ -10,7 +10,7 @@
             </li>
         </ul>
     </div>
-</template>
+</template> -->
 
 <script>
 import {mapState,mapGetters,mapActions} from 'vuex'

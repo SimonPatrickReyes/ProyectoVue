@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
+    "firebase": "^9.17.1",
     "vue": "^3.2.45",
     "vue-head": "^2.2.0",
     "vue-meta": "^2.4.0",

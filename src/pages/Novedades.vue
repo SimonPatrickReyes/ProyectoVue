@@ -6,7 +6,8 @@
                 :to="{ name: 'videogames.show', params: { id: videogame.id } }">
                 <img :src=imgSrc(videogame) alt="videogame.name">
                 <h2>{{ videogame.name }}</h2>
-            </router-link>
+                <p>{{ videogame.relaseDate }}</p>
+        </router-link>
         </div>
     </div>
 </template>

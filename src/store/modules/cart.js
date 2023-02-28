@@ -7,9 +7,12 @@ export default {
     getters: {
         cartVideogames(state, getters, rootState, rootGetters) {
             return state.items.map(cartItem => {
-                const videogame = rootState.videogames.items.find(videogame => videogame.id === cartItem)
+                console.log(cartItem)  
+                console.log(rootState.videogames.items)
+                const videogame=rootState.videogames.items.find(videogame => videogame.id === cartItem)
+                console.log(videogame)
                 return {
-                    title: videogame.name,
+                    name: videogame.name,
                     price: videogame.price,
                 }
             })
@@ -22,7 +25,7 @@ export default {
     },
     mutations: {
         pushVideogameToCart(state, videogameId) {
-            state.items.push({ videogameId })
+            state.items.push( videogameId )
         },
         setCheckoutStatus(state, status) {
             state.checkoutStatus = status
@@ -31,12 +34,18 @@ export default {
             state.items = []
         }
     },
+    
     actions: {
         addVideogameToCart({ state, getters, commit, rootState, rootGetters }, videogame) {
             const cartItem = state.items.find(itemId => itemId === videogame.id)
+            
+          
             if (!cartItem) {
                 commit('pushVideogameToCart', videogame.id)
+            }else{
+                console.log("repetido")
             }
+            
         }
     },
     checkout({ state, commit }) {
