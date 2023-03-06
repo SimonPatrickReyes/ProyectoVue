@@ -2,7 +2,8 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import VideogameList from './components/VideogameList.vue'
-import ShoppingCart from './components/ShoppingCart.vue'
+
+import { mapState, mapGetters, mapActions } from "vuex"
 
 export default {
   name: "App",
@@ -10,7 +11,7 @@ export default {
     Header,
     Footer,
     VideogameList,
-    ShoppingCart
+    
   },
   data() {
     return {
@@ -20,8 +21,12 @@ export default {
   
   created() {
     this.games = this.fecthAPI()
+    this.localStorageUser()
   },
   methods: {
+    ...mapActions('user', {
+      localStorageUser: "localStorageUser",
+    }),
     async fecthAPI() {
       const res = await fetch('http://localhost:3001/api/v1/videogames')
       const data = await res.json()
@@ -36,8 +41,12 @@ export default {
   <!--<component :is="currentView" />-->
   <div>
       <VideogameList/>
-      <ShoppingCart/>
+      
       <RouterView :key="$route.path"/>
   </div>
   <Footer />
 </template>
+
+<style>
+@import "../public/main.css";
+</style>

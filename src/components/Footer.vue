@@ -1,6 +1,6 @@
 <template>
    <footer>
-    Footer
+      <p>JustGames, diseñado por Simon Patrick</p>
    </footer>
 </template>
 

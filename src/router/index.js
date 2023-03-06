@@ -10,6 +10,7 @@ const routes = [
     {path: '/comunidad',name: 'Comunidad', component:  ()=>import('@/pages/Comunidad.vue')},
     {path: '/videogames/:id', name: 'videogames.show', component: ()=>import('@/pages/VideogamesShow.vue')},
     {path: '/login', name:'login', component: ()=>import('@/pages/Login.vue')},
+    {path: '/profile', name:'profile', component: ()=>import('@/pages/Profile.vue')},
     {path: '/register', name:'register', component: ()=>import('@/pages/Register.vue')},
     {path:"/:patchMatch(.*)*", name:"NotFound", component: () => import('@/pages/NotFound.vue'),
     }

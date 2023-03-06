@@ -1,19 +1,14 @@
 <template>
-    <div>
+    <aside class="aside_carrito">
         <h1>Carrito</h1>
-        <ul>
-            <li v-for="videogame in videogames">
-            {{videogame.title}}-{{videogame.price | currency}}-{{videogame.quantity}}
-            </li>
-        </ul>
-        <p>Total:{{total | currency}}</p>
-        <button @click="checkout">Checkout</button>
+        <p>Productos:{{ videogames.length }}</p>
+        <p>Total:{{total | currency}}€</p>
+        <button @click="checkout" class="checkout">Checkout</button>
         <p v-if="$checkoutStatus">{{checkoutStatus}}</p>
-    </div>
+    </aside>
 </template>
-
 <script>
-import { currency } from '../currency';
+import {currency} from '../currency';
 import {mapState, mapGetters,mapActions} from 'vuex'
 
 export default{

@@ -5,6 +5,10 @@ export default {
         checkoutStatus: null
     },
     getters: {
+        countVideogames(state){
+            return state.items.count()
+
+        },
         cartVideogames(state, getters, rootState, rootGetters) {
             return state.items.map(cartItem => {
                 console.log(cartItem)  

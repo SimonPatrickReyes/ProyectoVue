@@ -1,22 +1,38 @@
 
 <template>
-  <Filter @check-filter="updateDataByFilter" />
-  <div v-for="game in tagVideogames" :key="game.id" class="tienda">
-    <router-link class="tienda_router" :to="{ name: 'videogames.show', params: { id: game.id } }">
-      <img :src=imgSrc(game) alt="videogame.name">
-      <h3>{{ game.name }}</h3>
-    </router-link>
-    <ul>
-      <li v-for="tag in game.tags"><a href="">{{ tag }}</a></li>
-    </ul>
-    <h4>{{ game.price + "€" }}</h4>
-    <button @click="addVideogameToCart(game)">Añadir al carrito</button>
-  </div>
+  <main class="tienda_main">
+    <aside class="tienda_aside">
+      <Filter @check-filter="updateDataByFilter" />
+    </aside>
+    <div class="tienda_div">
+      <section class="tienda_videogames">
+        <div v-for="game in tagVideogames" :key="game.id" class="tienda">
+          <div class="tienda_content">
+            <router-link class="tienda_router" :to="{ name: 'videogames.show', params: { id: game.id } }">
+            <img :src=imgSrc(game) alt="videogame.name">
+          </router-link>
+          <div>
+            <h3>{{ game.name }}</h3>
+            <ul>
+              <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
+            </ul>
+          </div>
+          </div>
+          
+          <div class="videogame_price">
+            <h4>{{ game.price + "€" }}</h4>
+            <button @click="addVideogameToCart(game)">Añadir al carrito</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <ShoppingCart />
+  </main>
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import Filter from '../components/Filter.vue'
-
+import ShoppingCart from '../components/ShoppingCart.vue'
 export default {
   name: "Tienda",
   data() {
@@ -39,15 +55,15 @@ export default {
         }
         else {
           const filteredVideogames = [];
-          videogames.forEach(videogame => 
+          videogames.forEach(videogame =>
             this.tags.forEach(tag => {
-                if (this.activeTags.includes(tag) && videogame.tags.includes(tag)) {
-                  console.log(videogame.name + ' ' + tag)
-                  if (!filteredVideogames.includes(videogame)){
-                      filteredVideogames.push(videogame)
-                  }
+              if (this.activeTags.includes(tag) && videogame.tags.includes(tag)) {
+                console.log(videogame.name + ' ' + tag)
+                if (!filteredVideogames.includes(videogame)) {
+                  filteredVideogames.push(videogame)
                 }
               }
+            }
             )
           )
           return filteredVideogames
@@ -63,6 +79,9 @@ export default {
     await this.fecthVideogames()
   },
   methods: {
+    replaceCharacters(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1).replace('_', ' ');
+    },
     updateDataByFilter(udpateOptions) {
       this.activeTags = udpateOptions
       console.log("activeTags" + this.activeTags)
@@ -85,6 +104,6 @@ export default {
       return `/src/images/${videogame.img}`
     }
   },
-  components: { Filter },
+  components: { Filter, ShoppingCart },
 }
 </script>

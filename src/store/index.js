@@ -31,11 +31,13 @@
 import { createStore } from 'vuex'
 import cart from './modules/cart'
 import videogames from './modules/videogames'
+import user from './modules/user'
 
 const store = createStore({
     modules:{
         cart,
-        videogames
+        videogames,
+        user,
     },
     state () { //data
       return{
