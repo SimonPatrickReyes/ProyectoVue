@@ -1,9 +1,9 @@
 <template>
     <aside class="aside_carrito">
         <h1>Carrito</h1>
-        <p>Productos:{{ videogames.length }}</p>
-        <p>Total:{{total | currency}}€</p>
-        <button @click="checkout" class="checkout">Checkout</button>
+        <p>Productos: {{ videogames.length }}</p>
+        <p style="font-weight: 600;">Total:{{total | currency}}€</p>
+        <button @click="this.$router.push({name:'checkout'})" class="checkout">Checkout</button>
         <p v-if="$checkoutStatus">{{checkoutStatus}}</p>
     </aside>
 </template>

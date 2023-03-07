@@ -5,17 +5,19 @@ export default {
         checkoutStatus: null
     },
     getters: {
-        countVideogames(state){
+        countVideogames(state) {
             return state.items.count()
 
         },
         cartVideogames(state, getters, rootState, rootGetters) {
             return state.items.map(cartItem => {
-                console.log(cartItem)  
+                console.log(cartItem)
                 console.log(rootState.videogames.items)
-                const videogame=rootState.videogames.items.find(videogame => videogame.id === cartItem)
+                const videogame = rootState.videogames.items.find(videogame => videogame.id === cartItem)
                 console.log(videogame)
                 return {
+                    id: videogame.id,
+                    img: videogame.img,
                     name: videogame.name,
                     price: videogame.price,
                 }
@@ -29,32 +31,37 @@ export default {
     },
     mutations: {
         pushVideogameToCart(state, videogameId) {
-            state.items.push( videogameId )
+            state.items.push(videogameId)
         },
         setCheckoutStatus(state, status) {
             state.checkoutStatus = status
         },
         emptyCart(state) {
             state.items = []
-        }
+        },
+        deleteVideogameInCart(state, videogameId) {
+            state.items = state.items.filter(videogame => videogame != videogameId);
+        },
     },
-    
+
     actions: {
         addVideogameToCart({ state, getters, commit, rootState, rootGetters }, videogame) {
             const cartItem = state.items.find(itemId => itemId === videogame.id)
-            
-          
+
             if (!cartItem) {
                 commit('pushVideogameToCart', videogame.id)
-            }else{
+            } else {
                 console.log("repetido")
             }
-            
+
+        },
+        eliminateVideogameInCart({ commit }, videogameId) {
+            commit("deleteVideogameInCart", videogameId)
+        },
+
+        checkout({ state, commit }) {
+            commit('emptyCart')
+            commit('setCheckoutStatus', 'success')
         }
-    },
-    checkout({ state, commit }) {
-        commit('emptyCart')
-        commit('setCheckoutStatus', 'success')
     }
 }
-
