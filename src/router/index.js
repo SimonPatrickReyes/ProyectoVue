@@ -6,8 +6,7 @@ import Tienda from '../pages/Tienda.vue'
 const routes = [
     {path: '/',name: 'Tienda', component: Tienda},
     {path: '/novedades',name: 'Novedades', component: ()=>import('@/pages/Novedades.vue')},
-    {path: '/soporte',name: 'Soporte', component:  ()=>import('@/pages/Soporte.vue')},
-    {path: '/comunidad',name: 'Comunidad', component:  ()=>import('@/pages/Comunidad.vue')},
+    {path: '/biblioteca',name: 'Biblioteca', component:  ()=>import('@/pages/Biblioteca.vue')},
     {path: '/videogames/:id', name: 'videogames.show', component: ()=>import('@/pages/VideogamesShow.vue')},
     {path: '/login', name:'login', component: ()=>import('@/pages/Login.vue')},
     {path: '/profile', name:'profile', component: ()=>import('@/pages/Profile.vue')},

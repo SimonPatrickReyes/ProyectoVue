@@ -62,6 +62,21 @@ export default {
         checkout({ state, commit }) {
             commit('emptyCart')
             commit('setCheckoutStatus', 'success')
-        }
+        },
+      
+        moveToPurchased({ state, commit }, cartVideogames) {
+            // loop through the cartVideogames array and remove each item from the cart
+            cartVideogames.forEach(cartItem => {
+                const index = state.items.indexOf(cartItem)
+                if (index !== -1) {
+                    state.items.splice(index, 1)
+                }
+            })
+
+            // push the cartVideogames array into the PurchasedVideogames array
+            commit('addPurchasedVideogames', cartVideogames)
+        },
+        
+
     }
 }

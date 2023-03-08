@@ -552,8 +552,11 @@ label {
     color: #eee;
     cursor: pointer;
     flex: none;
-    margin: 1rem;
+    margin: auto;
+    text-align: center;
 }
+
+
 
 
 /************CHECKOUT****************/
