@@ -1,20 +1,7 @@
-<!-- <template>
-    <div>
-        <h1>Videogames List</h1>
-        <ul>
-            <li v-if="videogames" v-for="videogame in videogames">
-                {{videogame.title}}-{{videogame.price | currency}}-{{videogame.inventory}}
-                <button @click="addVideogameToCart(videogame)"
-                >Añadir al carrito</button>
-            
-            </li>
-        </ul>
-    </div>
-</template> -->
+
 
 <script>
 import {mapState,mapGetters,mapActions} from 'vuex'
-import { currency } from '../currency'
 
     export default{
         data(){

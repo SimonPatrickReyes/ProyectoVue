@@ -87,6 +87,7 @@ export default {
       console.log("activeTags" + this.activeTags)
 
     },
+    
     // async fecthAPI(){
     //     console.log("fetch")
     //     const res = await fetch('http://localhost:3001/api/v1/videogames')
@@ -94,6 +95,7 @@ export default {
     //         console.log(data)
     //         return data
     // },
+
     ...mapActions('videogames', {
       fecthVideogames: "fecthVideogames",
     }),

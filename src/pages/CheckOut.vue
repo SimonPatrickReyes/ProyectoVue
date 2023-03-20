@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="checkout_buy">
-        <p>Total:{{total | currency}}€</p>
+        <p>Total:{{total}}€</p>
         <button>Comprar</button>
         </div>
     </div>
