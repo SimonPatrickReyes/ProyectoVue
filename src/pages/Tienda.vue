@@ -46,6 +46,8 @@ export default {
     }
   },
   computed: {
+    /*Metodo tagVideogames devuelve una lista que contiene los videojuegos que contengan entre sus  etiquetas al menos una de las etiquetas
+    almacenadas en el array activeTags, de modo que se filtran los videojuegos por las etiquetas activas.*/ 
     tagVideogames() {
       const videogames = this.$store.getters["videogames/videogames"]
       if (videogames) {

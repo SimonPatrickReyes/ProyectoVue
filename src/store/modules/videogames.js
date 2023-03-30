@@ -3,28 +3,15 @@ export default{
     state:{
         items:[]
     },
+
     getters:{
         videogames(state){
             return state.items
         },
-        availableVideogames(state,getters){
-            return state.items.filter(videogame=>videogame.inventory>0)
-    
-        },
-        
-        videogameIsInStock(){
-            return(videogame)=>{
-                return videogame.inventory>0
-            }
-        }
     },
     mutations:{
         setVideogames(state,videogames){
             state.items=videogames
-        },
-        
-        decrementVideogameInventory(state,videogame){
-            videogame.inventory--
         },
     },
     actions:{

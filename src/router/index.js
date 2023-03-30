@@ -13,10 +13,6 @@ const routes = [
     {path: '/register', name:'register', component: ()=>import('@/pages/Register.vue')},
     {path:"/:patchMatch(.*)*", name:"NotFound", component: () => import('@/pages/NotFound.vue')},
     {path: '/checkout', name: 'checkout', component: ()=>import('@/pages/CheckOut.vue')},
-    
-
-    
-    
 ]
 
 

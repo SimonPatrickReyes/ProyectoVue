@@ -23,6 +23,7 @@ export default {
     this.games = this.fecthAPI()
     this.localStorageUser()
   },
+  
   methods: {
     ...mapActions('user', {
       localStorageUser: "localStorageUser",
