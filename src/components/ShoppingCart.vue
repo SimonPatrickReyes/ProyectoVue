@@ -1,14 +1,14 @@
 <template>
-    <aside class="aside_carrito">
+    <div class="aside_carrito">
         <h1>Carrito</h1>
         <p>Productos: {{ videogames.length }}</p>
-        <p style="font-weight: 600;">Total:{{total | currency}}€</p>
+        <p style="font-weight: 600;">Total:{{total}}€</p>
         <button @click="this.$router.push({name:'checkout'})" class="checkout">Checkout</button>
         <p v-if="$checkoutStatus">{{checkoutStatus}}</p>
-    </aside>
+    </div>
 </template>
 <script>
-import {currency} from '../currency';
+
 import {mapState, mapGetters,mapActions} from 'vuex'
 
 export default{

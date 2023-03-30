@@ -41,7 +41,7 @@ export default {
       tags: ["Open_World", "Story_Rich", "Adventure", "Western", "Survival",
         "Crafting", "Multiplayer", "PvP", "Sandbox", "Funny", "Moddeable",
         "Mod", "Zombies", "2D", "Pirates", "RPG", "Post-apocalyptic",
-        "Singleplayer", "FPS", "Hero_Shooter", "Tactical"],
+        "Singleplayer", "FPS","Sci-fi_Space", "Hero_Shooter", "Tactical"],
       activeTags: [],
     }
   },
@@ -89,6 +89,7 @@ export default {
       console.log("activeTags" + this.activeTags)
 
     },
+    
     // async fecthAPI(){
     //     console.log("fetch")
     //     const res = await fetch('http://localhost:3001/api/v1/videogames')
@@ -96,6 +97,7 @@ export default {
     //         console.log(data)
     //         return data
     // },
+
     ...mapActions('videogames', {
       fecthVideogames: "fecthVideogames",
     }),

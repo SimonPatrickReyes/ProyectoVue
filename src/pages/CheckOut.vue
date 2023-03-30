@@ -1,5 +1,5 @@
 <template>
-<h1>Check Out</h1>
+<h1 class="checkout_h1">Check Out</h1>
     <div class="checkout">
         <div v-for="game in videogames" :key="game.id">
             <div class="checkout_videogame">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="checkout_buy">
-        <p>Total:{{total | currency}}€</p>
+        <p>Total:{{total}}€</p>
         <button>Comprar</button>
         </div>
     </div>
