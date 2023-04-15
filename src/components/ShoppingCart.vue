@@ -1,35 +1,43 @@
 <template>
-    <div class="aside_carrito">
-        <h1>Carrito</h1>
-        <p>Productos: {{ videogames.length }}</p>
-        <p style="font-weight: 600;">Total:{{total}}€</p>
-        <button @click="this.$router.push({name:'checkout'})" class="checkout">Checkout</button>
-        <p v-if="$checkoutStatus">{{checkoutStatus}}</p>
-    </div>
+        <router-link to="/checkout" class="shoppingCart"><img src="../images/shopping-cart.png" alt="shoppingCart">
+
+        <span class="shoppingCart__span">{{ videogames.length }}</span></router-link>
+
 </template>
 <script>
 
 import {mapState, mapGetters,mapActions} from 'vuex'
+import CheckOutButton from './CheckOutButton.vue';
 
 export default{
-    computed:{
-        ...mapGetters('cart',{
-            videogames:'cartVideogames',
-            total:'cartTotal'
+    name: "ShoppingCart",
+    computed: {
+        ...mapGetters("cart", {
+            videogames: "cartVideogames",
+            total: "cartTotal"
         }),
-        ...mapState('cart',{
-            checkoutStatus:state=>state.checkoutStatus
+        ...mapState("cart", {
+            checkoutStatus: state => state.checkoutStatus
         }),
-
-        ...mapGetters ('cart',{
-                videogames: "cartVideogames",
-                total: "cartTotal",
-            }),
+        ...mapState("user", {
+            userData: state => state.userData
+        }),
+        ...mapGetters("cart", {
+            videogames: "cartVideogames",
+            total: "cartTotal",
+        }),
     },
-    methods:{
-        ...mapActions('cart',{
-            checkout:'checkout'
+    created() {
+        this.localStorageUser();
+    },
+    methods: {
+        ...mapActions("cart", {
+            checkout: "checkout"
         }),
-    }
+        ...mapActions("user", {
+            localStorageUser: "localStorageUser"
+        }),
+    },
+    components: { CheckOutButton }
 }
 </script>

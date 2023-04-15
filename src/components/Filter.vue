@@ -1,7 +1,7 @@
 <template>
     <div class="filters">
         <ul class="filters__ul">
-            <p class="filters__p">Filtrar por:</p>
+            <p class="filters__p">Filtrar por categoria</p>
             <li v-for="tag in tags" class="filters__li">
                 <input type="checkbox" :name=tag :id=tag @change="checkFilter($event)">
                 <label :for=tag>{{ replaceCharacters(tag) }}</label>

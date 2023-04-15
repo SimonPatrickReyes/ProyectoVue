@@ -5,6 +5,7 @@ import VideogameList from './components/VideogameList.vue'
 
 import { mapState, mapGetters, mapActions } from "vuex"
 
+
 export default {
   name: "App",
   components: {
@@ -28,10 +29,14 @@ export default {
     ...mapActions('user', {
       localStorageUser: "localStorageUser",
     }),
+    ...mapActions(['leerToken']),
     async fecthAPI() {
       const res = await fetch('http://localhost:3001/api/v1/videogames')
       const data = await res.json()
       return data
+    },
+    created(){
+      this.leerToken()
     }
   },
 }
@@ -49,5 +54,5 @@ export default {
 </template>
 
 <style>
-@import "../public/main.css";
+@import "../src/assets/sass/main.scss";
 </style>

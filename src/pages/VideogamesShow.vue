@@ -1,14 +1,25 @@
 <template>
    <section v-if="videogame">
-    <body class="videogame">
-        
-    <img :src=imgPath+videogame.img alt="">
+    <body class="videogame__body">
+    <div class="videogame__carousel">
+        <video src="../images/redDeadRedemption.webm" controls autoplay muted></video>
+        <div class="videogame__images">
+            <img src="../images/redDeadRedemption/paisaje1.jpg" alt="">
+            <img src="../images/redDeadRedemption/paisaje2.jpg" alt="">
+            <img src="../images/redDeadRedemption/paisaje3.jpg" alt="">
+            <img src="../images/redDeadRedemption/paisaje4.jpg" alt="">
+        </div>
+
+    </div>
+    <div class="videogame__cover">
     <h1>{{ videogame.name}}</h1>
-    <div>
-        <p>{{ videogame.description }}</p>
-    </div></body>
+    <img :src=imgPath+videogame.img alt="">
+    <p>{{ videogame.description }}</p>
+    </div>
+    </body>
    </section>
 </template>
+
 <script>
 export default {
     data() {

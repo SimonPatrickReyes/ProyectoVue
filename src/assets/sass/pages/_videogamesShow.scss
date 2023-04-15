@@ -1,0 +1,45 @@
+.videogame__body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    padding: 3rem;
+    width: 80%;
+}
+
+.videogame__carousel{
+    background-color: rgba(0, 255, 255, 0.166);
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    
+}
+
+.videogame__images{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+.videogame__images img{
+   width: 10%;
+}
+
+.videogame__cover{
+    background-color: rgba(0, 255, 255, 0.166);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 70%;
+
+    img{
+        width: 40%;
+    }
+
+    p{  
+        padding: 2rem;
+    }
+}

@@ -25,14 +25,16 @@
         </div>
         <div class="checkout_buy">
         <p>Total:{{total}}€</p>
-        <button>Comprar</button>
+        <CheckOutButton v-bind:user="this.userData"/>
         </div>
     </div>
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import CheckOutButton from '../components/CheckOutButton.vue'
 
 export default {
+    
     computed: {
         ...mapGetters('cart', {
             videogames: 'cartVideogames',
@@ -46,6 +48,13 @@ export default {
             videogames: "cartVideogames",
             total: "cartTotal",
         }),
+        ...mapState("user", {
+            userData: state => state.userData
+        }),
+    },
+
+    created() {
+        this.localStorageUser();
     },
 
     getters: {
@@ -77,9 +86,14 @@ export default {
             checkout: 'checkout',
             eliminateVideogameInCart: 'eliminateVideogameInCart'
         }),
+        ...mapActions("user", {
+            localStorageUser: "localStorageUser"
+        }),
         imgSrc(videogame) {
             return `/src/images/${videogame.img}`
         },
+        
     },
+    components: { CheckOutButton }
 }
 </script>

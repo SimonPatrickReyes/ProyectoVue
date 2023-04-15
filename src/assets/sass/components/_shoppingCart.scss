@@ -1,0 +1,32 @@
+.shoppingCart__link{
+    position:relative;
+}
+
+.shoppingCart img{
+    filter:invert(1);
+}
+.shoppingCart{
+    position: relative;
+}
+
+
+.shoppingCart img:hover{
+    filter:blur(0.1rem);
+    
+}
+
+.shoppingCart__span {
+    font-size: 0.8rem;
+    background:linear-gradient(to right, #679a20 5%, #477015 95%);
+    border-radius: 10rem;
+    min-width: 1rem;
+    min-height: 1rem;
+    padding: 0 0.1875rem;
+    position: absolute;
+    right: 0px;
+}
+
+
+
+
+

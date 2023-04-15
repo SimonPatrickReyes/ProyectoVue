@@ -1,7 +1,7 @@
 <template>
 <div class="form">
   <h2>Sign in to Steam</h2>
-  <form @submit.prevent="doLogin({ inputEmail: this.email, inputPassword: this.password }),this.$router.push({name:'Tienda'})">
+  <form @submit.prevent="doLoginPopUp()">
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" v-model="email" id="email" name="email" required>
@@ -20,19 +20,26 @@
   </form>
   <span v-if="message"> {{ message }}</span>
 </div>
+<Modal :notClose="true" @close="toggleModal" :modalActive="modalActive">
+            <div class="modal--login">
+                <h1>Logeao</h1>
+                <a href="/">Volver a Inicio</a>
+            </div>
+        </Modal>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex"
+import Modal from "../components/Modal.vue"
 
 export default {
     name: "Login",
     data() {
         return {
-            isLogin: true,
             loading: false,
             email: null,
             password: null,
+            modalActive:false
         };
     },
     computed: {
@@ -47,9 +54,28 @@ export default {
             doLogin: "doLogin",
             logout: "logout"
         }),
+        toggleModal(){
+            this.modalActive = !this.modalActive;
+        },
         resetData() {
             this.email = this.password = '';
         },
+        async doLoginPopUp(){
+            this.loading = true
+            await this.doLogin({ inputEmail: this.email, inputPassword: this.password })
+            this.loading = false
+            if(this.user){
+                this.modalActive = true
+            }
+            else{
+                this.showMessage = true
+                setTimeout(() => this.showMessage = false, 5000);
+            }
+        },
     },
+    components:{
+      Modal
+    },
+    
 };
 </script>

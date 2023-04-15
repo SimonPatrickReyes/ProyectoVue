@@ -1,24 +1,22 @@
 
 <template>
-  <main class="tienda_main">
-    <aside class="tienda_aside">
-      <Filter @check-filter="updateDataByFilter" />
-    </aside>
-    <div class="tienda_div">
+  <main class="tienda__main">
+
+    <div class="tienda__div">
       <section class="tienda_videogames">
         <div v-for="game in tagVideogames" :key="game.id" class="tienda">
-          <div class="tienda_content">
-            <router-link class="tienda_router" :to="{ name: 'videogames.show', params: { id: game.id } }">
-            <img :src=imgSrc(game) alt="videogame.name">
-          </router-link>
-          <div>
-            <h3>{{ game.name }}</h3>
-            <ul>
-              <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
-            </ul>
+          <div class="tienda__content">
+            <router-link class="tienda__router" :to="{ name: 'videogames.show', params: { id: game.id } }">
+              <img :src=imgSrc(game) alt="videogame.name">
+            </router-link>
+            <div>
+              <h3>{{ game.name }}</h3>
+              <ul>
+                <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
+              </ul>
+            </div>
           </div>
-          </div>
-          
+
           <div class="videogame_price">
             <h4>{{ game.price + "€" }}</h4>
             <button @click="addVideogameToCart(game)">Añadir al carrito</button>
@@ -26,7 +24,11 @@
         </div>
       </section>
     </div>
-    <ShoppingCart />
+
+    <aside class="tienda__aside">
+      <Filter @check-filter="updateDataByFilter" />
+    </aside>
+
   </main>
 </template>
 <script>
@@ -41,13 +43,13 @@ export default {
       tags: ["Open_World", "Story_Rich", "Adventure", "Western", "Survival",
         "Crafting", "Multiplayer", "PvP", "Sandbox", "Funny", "Moddeable",
         "Mod", "Zombies", "2D", "Pirates", "RPG", "Post-apocalyptic",
-        "Singleplayer", "FPS","Sci-fi_Space", "Hero_Shooter", "Tactical"],
+        "Singleplayer", "FPS", "Sci-fi_Space", "Hero_Shooter", "Tactical"],
       activeTags: [],
     }
   },
   computed: {
     /*Metodo tagVideogames devuelve una lista que contiene los videojuegos que contengan entre sus  etiquetas al menos una de las etiquetas
-    almacenadas en el array activeTags, de modo que se filtran los videojuegos por las etiquetas activas.*/ 
+    almacenadas en el array activeTags, de modo que se filtran los videojuegos por las etiquetas activas.*/
     tagVideogames() {
       const videogames = this.$store.getters["videogames/videogames"]
       if (videogames) {
@@ -89,7 +91,7 @@ export default {
       console.log("activeTags" + this.activeTags)
 
     },
-    
+
     // async fecthAPI(){
     //     console.log("fetch")
     //     const res = await fetch('http://localhost:3001/api/v1/videogames')

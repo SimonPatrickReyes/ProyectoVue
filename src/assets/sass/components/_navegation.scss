@@ -1,0 +1,91 @@
+.nav {
+    display:flex;
+    justify-content:space-between;
+    background-color: #2c3e50;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.nav__links a {
+    text-decoration: none;
+    color: #eee;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+}
+
+.nav__links a:hover {
+    text-shadow: 1px 1px 20px black, 0 0 1em #eee, 0 0 0.2em #eee;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.nav__links .vue-active-link{
+    text-shadow: 1px 1px 20px black, 0 0 1em rgb(13, 20, 44), 0 0 0.2em #eee;
+    font-weight: 600;
+    font-size: 1.3rem;
+    border-width: 1rem;
+}
+
+.nav__logo{
+    width: 2rem;
+}
+
+.singIn :hover  {
+    text-shadow: 1px 1px 20px black, 0 0 1em rgb(13, 20, 44), 0 0 0.2em #eee;
+    background-color: rgb(199, 190, 190);
+}
+
+.login_register{
+    color: #eee;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.7rem;
+    background-color: rgb(123, 138, 138);
+    border-radius: 3px;
+    padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+    margin: 0.4rem;
+    justify-content: center;
+}
+
+.logout{
+    color: #eee;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.7rem;
+    background-color: rgb(123, 138, 138);
+    border-radius: 3px;
+    padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+    margin: 0.4rem;
+    text-transform:uppercase;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.logout:hover  {
+    text-shadow: 1px 1px 20px black, 0 0 1em rgb(13, 20, 44), 0 0 0.2em #eee;
+    background-color: rgb(199, 190, 190);
+}
+
+.profile_icon{
+    filter:invert(1);
+    display: flex;
+}
+
+.profile_icon img:hover{
+    filter:blur(0.1rem);
+}
+
+.rightNav{
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+
+
+.profile_icon{
+    height:fit-content;
+}
+

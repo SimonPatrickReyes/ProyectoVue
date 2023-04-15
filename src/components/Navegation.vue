@@ -3,7 +3,7 @@
     <div class="nav_links">
     <router-link to="/">Tienda</router-link>    
     <router-link to="/novedades">Novedades</router-link>    
-    <router-link to="/biblioteca">Biblioteca</router-link>    
+    <router-link v-if="user" to="/biblioteca">Biblioteca</router-link>    
 </div>
 
 <div class="singIn">
@@ -12,32 +12,35 @@
 </div>
 
 <div class="singOut">
+    <ShoppingCart/>
 <router-link v-if="user" to="/profile" class="profile_icon"><img src="../images/profile-user.png" alt="user_profile"></router-link>
+
 <button class="logout" v-if="user" @click=" logout(), this.$router.push({name:'Tienda'})">Log Out</button>
 </div></div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex"
+import ShoppingCart from "./ShoppingCart.vue"
     export default{
-        name: "Navegation",
-        methods:{
-            async fetchVideogame(){
-                const res=await fetch("http://localhost:3001/api/v1/videogames")
-                const gamesData= Object.values(await res.json())
-                return gamesData
-            },
-            ...mapActions('user', {
+    name: "Navegation",
+    methods: {
+        async fetchVideogame() {
+            const res = await fetch("http://localhost:3001/api/v1/videogames");
+            const gamesData = Object.values(await res.json());
+            return gamesData;
+        },
+        ...mapActions("user", {
             logout: "logout"
         }),
-    
-        },
-        computed: {
-            ...mapState('user', {
+    },
+    computed: {
+        ...mapState("user", {
             user: state => state.userData,
-            }),
-        },
-    }
+        }),
+    },
+    components: { ShoppingCart }
+}
 </script>
 
 <style>
