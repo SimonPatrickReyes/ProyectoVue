@@ -1,8 +1,9 @@
 <template>
-<h1 class="checkout_h1">Check Out</h1>
     <div class="checkout">
-        <div v-for="game in videogames" :key="game.id">
-            <div class="checkout_videogame">
+    <h1 class="checkout__h1">Carro de la compra</h1>
+    
+        <div v-if="count!=0" v-for="game in videogames" :key="game.id">
+            <div class="checkout__videogame">
                 <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
                     <img :src=imgSrc(game) alt="videogame.name">
                 </router-link>
@@ -18,14 +19,21 @@
                 <div class="videogame_price">
                     <h4>{{ game.price + "€" }}</h4>
                 </div>
-                <div class="checkout_buttons">
+                <div class="checkout__buttons">
                     <button @click="eliminateVideogameInCart(game.id)">X</button>
                 </div>
             </div>
         </div>
-        <div class="checkout_buy">
-        <p>Total:{{total}}€</p>
-        <CheckOutButton v-bind:user="this.userData"/>
+        <div v-else>
+        <div class="checkout__alert">
+        <p>¡No hay articulos en el carrito!</p>
+        <router-link to="/">Volver a la tienda</router-link>
+        </div>   
+        </div>
+
+        <div class="checkout__buy">
+            <p>Total:{{ total }}€</p>
+            <CheckOutButton v-bind:user="this.userData" />
         </div>
     </div>
 </template>
@@ -34,11 +42,12 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import CheckOutButton from '../components/CheckOutButton.vue'
 
 export default {
-    
+
     computed: {
         ...mapGetters('cart', {
             videogames: 'cartVideogames',
-            total: 'cartTotal'
+            total: 'cartTotal',
+            count: 'countVideogames'
         }),
         ...mapState('cart', {
             checkoutStatus: state => state.checkoutStatus
@@ -92,7 +101,7 @@ export default {
         imgSrc(videogame) {
             return `/src/images/${videogame.img}`
         },
-        
+
     },
     components: { CheckOutButton }
 }

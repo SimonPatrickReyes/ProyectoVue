@@ -1,23 +1,20 @@
 <template>
    <div class="profile">
-      <h1>Profile</h1>
-      <div v-for="game in tagVideogames" :key="game.id">
-         <div>
-            <router-link :to="{ name: 'videogames.show', params: { id: user.videogamesPurchased } }">
-               <img :src=imgSrc(game) alt="videogame.name">
-            </router-link>
-         </div>
-      </div>
+      <h1>{{user.name}}</h1>
+      
+      
+      
    </div>
 </template>
+
 <script>
+import { mapState, mapGetters, mapActions } from "vuex"
 export default {
    name: "profile",
     data() {
         return {
             isLogin: true,
             loading: false,
-            email: null,
             password: null,
         };
     },

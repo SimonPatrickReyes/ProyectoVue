@@ -75,3 +75,28 @@ button[type="submit"]:hover {
 .form-links a:hover {
     color: #333;
 }
+
+.modal__login{
+    padding: 0;
+}
+
+.modal__login h1{
+    color: #21303f;
+}
+
+.modal__login a{
+    color: #21303f;
+}
+
+.message{
+    position: absolute;
+    background-color: #112538d4;
+    color: #eee;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 1rem;
+    width: 30%;
+}

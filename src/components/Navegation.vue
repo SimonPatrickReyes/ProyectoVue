@@ -1,6 +1,7 @@
 <template>
 <div class="nav"> 
-    <div class="nav_links">
+    <div class="nav__links">
+    <img src="../images/logo.png" alt="logo" class="nav__logo">
     <router-link to="/">Tienda</router-link>    
     <router-link to="/novedades">Novedades</router-link>    
     <router-link v-if="user" to="/biblioteca">Biblioteca</router-link>    
@@ -11,7 +12,7 @@
 <router-link v-if="!user" to="/register" class="login_register">Register</router-link>
 </div>
 
-<div class="singOut">
+<div class="signOut">
     <ShoppingCart/>
 <router-link v-if="user" to="/profile" class="profile_icon"><img src="../images/profile-user.png" alt="user_profile"></router-link>
 

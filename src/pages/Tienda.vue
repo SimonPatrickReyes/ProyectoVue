@@ -3,26 +3,35 @@
   <main class="tienda__main">
 
     <div class="tienda__div">
-      <section class="tienda_videogames">
+      <section class="tienda__videogames">
         <div v-for="game in tagVideogames" :key="game.id" class="tienda">
           <div class="tienda__content">
             <router-link class="tienda__router" :to="{ name: 'videogames.show', params: { id: game.id } }">
               <img :src=imgSrc(game) alt="videogame.name">
+
+              <div>
+                <h3>{{ game.name }}</h3>
+                <ul>
+                  <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
+                </ul>
+              </div>
             </router-link>
-            <div>
-              <h3>{{ game.name }}</h3>
-              <ul>
-                <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
-              </ul>
-            </div>
           </div>
 
-          <div class="videogame_price">
+          <div class="videogame__price">
             <h4>{{ game.price + "€" }}</h4>
-            <button @click="addVideogameToCart(game)">Añadir al carrito</button>
+            <button v-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al carrito</button>
+            <span v-else>En el carrito</span>
           </div>
+
         </div>
       </section>
+    </div>
+
+    <div v-if="showMessage" class="tienda__message">
+      <button @click="this.showMessage = false">X</button>
+      <span>{{ message }}</span>
+      <router-link to="/checkout">Ir al carrito</router-link>
     </div>
 
     <aside class="tienda__aside">
@@ -35,6 +44,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import Filter from '../components/Filter.vue'
 import ShoppingCart from '../components/ShoppingCart.vue'
+
 export default {
   name: "Tienda",
   data() {
@@ -45,6 +55,8 @@ export default {
         "Mod", "Zombies", "2D", "Pirates", "RPG", "Post-apocalyptic",
         "Singleplayer", "FPS", "Sci-fi_Space", "Hero_Shooter", "Tactical"],
       activeTags: [],
+      message: "",
+      showMessage: false
     }
   },
   computed: {
@@ -78,18 +90,31 @@ export default {
     ...mapState('videogames', {
       games: state => state.items,
     }),
+    ...mapState('cart', {
+      cart: state => state.items,
+    }),
   },
   async created() {
     await this.fecthVideogames()
   },
   methods: {
+    checkVideogameState(videogameId) {
+      return this.cart.includes(videogameId)
+    },
     replaceCharacters(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).replace('_', ' ');
     },
+
     updateDataByFilter(udpateOptions) {
       this.activeTags = udpateOptions
       console.log("activeTags" + this.activeTags)
+    },
 
+    addVideogameMessage(game) {
+      this.addVideogameToCart(game),
+        this.message = game.name + " añadido al carrito"
+      this.showMessage = true,
+        setTimeout(() => this.showMessage = false, 100000)
     },
 
     // async fecthAPI(){

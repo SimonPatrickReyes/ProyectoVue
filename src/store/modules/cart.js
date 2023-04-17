@@ -6,7 +6,7 @@ export default {
     },
     getters: {
         countVideogames(state) {
-            return state.items.count()
+            return state.items.length
 
         },
         cartVideogames(state, getters, rootState, rootGetters) {
