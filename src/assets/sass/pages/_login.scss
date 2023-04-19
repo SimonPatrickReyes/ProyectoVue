@@ -78,14 +78,17 @@ button[type="submit"]:hover {
 
 .modal__login{
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .modal__login h1{
-    color: #21303f;
+    color: #eee;
 }
 
 .modal__login a{
-    color: #21303f;
+    color: #eee;
 }
 
 .message{

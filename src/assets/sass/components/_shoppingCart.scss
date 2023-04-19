@@ -3,10 +3,12 @@
 }
 
 .shoppingCart img {
-    filter: invert(1);
+    
+    display: flex;
 }
 
 .shoppingCart {
+    filter: invert(1);
     position: relative;
 }
 
@@ -27,4 +29,5 @@
     right: 0rem;
     top: 0rem;
     text-align: center;
+    filter: invert(1);
 }

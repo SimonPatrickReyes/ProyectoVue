@@ -26,6 +26,16 @@
     column-gap: 20px;
     align-items: center;
 }
+
+.tienda__tittle{
+    margin-left: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
 .tienda a {
     text-decoration: none;
     color: #eee;
@@ -51,8 +61,6 @@
 }
 
 .tienda h3 {
-    align-items: center;
-    align-self: center;
     width: max-content;
 }
 

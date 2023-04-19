@@ -20,9 +20,9 @@
     </form>
     <span v-if="showMessage" class="message"> {{ message }}</span>
   </div>
-  <Modal :notClose="true" @close="toggleModal" :modalActive="modalActive" class="modal">
+  <Modal v-if="user" :notClose="true" @close="toggleModal" :modalActive="modalActive" class="modal">
     <div class="modal__login">
-      <h1>Logeao</h1>
+      <h1>¡Bienvenido de nuevo {{user.name}}!</h1>
       <a href="/">Volver a Inicio</a>
     </div>
   </Modal>

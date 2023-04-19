@@ -1,40 +1,49 @@
 <template>
     <div class="checkout">
-    <h1 class="checkout__h1">Carro de la compra</h1>
-    
-        <div v-if="count!=0" v-for="game in videogames" :key="game.id">
-            <div class="checkout__videogame">
-                <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
-                    <img :src=imgSrc(game) alt="videogame.name">
-                </router-link>
-                <div>
-                    <h3>{{ game.name }}</h3>
-                    <ul>
-                        <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
-                    </ul>
+        <h1 class="checkout__h1">Carro de la compra</h1>
+        <div v-if="count != 0" class="checkout__section">
+            <div v-for="game in videogames" :key="game.id" class="checkout__window">
+                <div class="checkout__videogame">
+                    <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
+                        <img :src=imgSrc(game) alt="videogame.name">
+                    </router-link>
+                    <div>
+                        <h3>{{ game.name }}</h3>
+                        <ul>
+                            <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>
+                        </ul>
 
+                    </div>
+
+
+                    <div class="videogame_price">
+                        <h4>{{ game.price + "€" }}</h4>
+                    </div>
+                    <div class="checkout__buttons">
+                        <button @click="eliminateVideogameInCart(game.id)">Eliminar</button>
+                    </div>
                 </div>
 
+            </div>
 
-                <div class="videogame_price">
-                    <h4>{{ game.price + "€" }}</h4>
+            <div class="checkout__buy">
+                <div class="checkout__price">
+                    <p>Total</p>
+                    <p>{{ total }}€</p>
                 </div>
-                <div class="checkout__buttons">
-                    <button @click="eliminateVideogameInCart(game.id)">X</button>
-                </div>
+
+                <CheckOutButton v-bind:user="this.userData" />
             </div>
         </div>
+
         <div v-else>
-        <div class="checkout__alert">
-        <p>¡No hay articulos en el carrito!</p>
-        <router-link to="/">Volver a la tienda</router-link>
-        </div>   
+            <div class="checkout__alert">
+                <p>¡No hay articulos en el carrito!</p>
+                <router-link to="/">Volver a la tienda</router-link>
+            </div>
         </div>
 
-        <div class="checkout__buy">
-            <p>Total:{{ total }}€</p>
-            <CheckOutButton v-bind:user="this.userData" />
-        </div>
+
     </div>
 </template>
 <script>

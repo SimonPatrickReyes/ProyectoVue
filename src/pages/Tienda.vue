@@ -9,7 +9,7 @@
             <router-link class="tienda__router" :to="{ name: 'videogames.show', params: { id: game.id } }">
               <img :src=imgSrc(game) alt="videogame.name">
 
-              <div>
+              <div class="tienda__tittle">
                 <h3>{{ game.name }}</h3>
                 <ul>
                   <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>

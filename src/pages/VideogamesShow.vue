@@ -1,7 +1,9 @@
 <template>
-   <section v-if="videogame">
+   <section v-if="videogame" class="videogame__section">
     <body class="videogame__body">
+        
     <div class="videogame__carousel">
+        <h1>{{ videogame.name}}</h1>
         <video src="../images/redDeadRedemption.webm" controls autoplay muted></video>
         <div class="videogame__images">
             <img src="../images/redDeadRedemption/paisaje1.jpg" alt="">
@@ -12,7 +14,6 @@
 
     </div>
     <div class="videogame__cover">
-    <h1>{{ videogame.name}}</h1>
     <img :src=imgPath+videogame.img alt="">
     <p>{{ videogame.description }}</p>
     </div>

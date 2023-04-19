@@ -7,14 +7,16 @@
     <router-link v-if="user" to="/biblioteca">Biblioteca</router-link>    
 </div>
 
+
+
+<div class="signOut">
+    <ShoppingCart v-if="user"/>
+<router-link v-if="user" to="/profile" class="profile_icon"><img src="../images/profile-user.png" alt="user_profile"></router-link>
+
 <div class="singIn">
 <router-link v-if="!user" to="/login" class="login_register">Log in</router-link>
 <router-link v-if="!user" to="/register" class="login_register">Register</router-link>
 </div>
-
-<div class="signOut">
-    <ShoppingCart/>
-<router-link v-if="user" to="/profile" class="profile_icon"><img src="../images/profile-user.png" alt="user_profile"></router-link>
 
 <button class="logout" v-if="user" @click=" logout(), this.$router.push({name:'Tienda'})">Log Out</button>
 </div></div>
