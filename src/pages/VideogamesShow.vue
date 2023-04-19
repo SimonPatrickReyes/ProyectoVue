@@ -1,24 +1,24 @@
 <template>
-   <section v-if="videogame" class="videogame__section">
-    <article class="videogame__body">
-        
-    <div class="videogame__carousel">
-        <h1>{{ videogame.name}}</h1>
-        <video src="../images/redDeadRedemption.webm" controls autoplay muted></video>
-        <div class="videogame__images">
-            <img src="../images/redDeadRedemption/paisaje1.jpg" alt="">
-            <img src="../images/redDeadRedemption/paisaje2.jpg" alt="">
-            <img src="../images/redDeadRedemption/paisaje3.jpg" alt="">
-            <img src="../images/redDeadRedemption/paisaje4.jpg" alt="">
-        </div>
-
-    </div>
-    <div class="videogame__cover">
-    <img :src=imgPath+videogame.img alt="">
-    <p>{{ videogame.description }}</p>
-    </div>
-    </article>
-   </section>
+    <section v-if="videogame" class="videogame__section">
+        <article class="videogame__article">
+            <h1>{{ videogame.name }}</h1>
+            <div class="videogame__content">
+                <div class="videogame__carousel">
+                    <video src="../images/redDeadRedemption.webm" controls autoplay muted></video>
+                    <div class="videogame__images">
+                        <img src="../images/redDeadRedemption/paisaje1.jpg" alt="">
+                        <img src="../images/redDeadRedemption/paisaje2.jpg" alt="">
+                        <img src="../images/redDeadRedemption/paisaje3.jpg" alt="">
+                        <img src="../images/redDeadRedemption/paisaje4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="videogame__cover">
+                    <img :src=imgPath+videogame.img alt="">
+                    <p>{{ videogame.description }}</p>
+                </div>
+            </div>
+        </article>
+    </section>
 </template>
 
 <script>
@@ -40,12 +40,12 @@ export default {
             return data
         }
     },
-    computed:{
-        videogameId(){
+    computed: {
+        videogameId() {
             return parseInt(this.$route.params.id)
         },
-        videogame(){
-            return this.games.find(videogame=>videogame.id === this.videogameId)
+        videogame() {
+            return this.games.find(videogame => videogame.id === this.videogameId)
         }
     }
 }
