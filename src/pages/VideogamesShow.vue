@@ -1,6 +1,6 @@
 <template>
    <section v-if="videogame" class="videogame__section">
-    <body class="videogame__body">
+    <article class="videogame__body">
         
     <div class="videogame__carousel">
         <h1>{{ videogame.name}}</h1>
@@ -17,7 +17,7 @@
     <img :src=imgPath+videogame.img alt="">
     <p>{{ videogame.description }}</p>
     </div>
-    </body>
+    </article>
    </section>
 </template>
 
