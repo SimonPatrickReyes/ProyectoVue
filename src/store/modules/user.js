@@ -6,7 +6,24 @@ export default {
             message: null,
         }
     },
-    getters: { // = computed
+    getters: {
+        userVideogames(state, getters, rootState, rootGetters) {
+            return state.userData.videogamesPurchased.map(userVideogame => {
+                console.log(userVideogame)
+                console.log(rootState.videogames.items)
+                const videogame = rootState.videogames.items.find(videogame => videogame.id === userVideogame)
+                console.log(videogame)
+                return {
+                    id: videogame.id,
+                    img: videogame.img,
+                    name: videogame.name,
+                    price: videogame.price,
+                }
+            })
+        },
+        userVideogameId(state){
+            return state.userData.videogamesPurchased;
+        }
     },
 
     mutations: {
@@ -25,15 +42,19 @@ export default {
         },
         setMessage(state, message) {
             state.message = message
-        }
+        },
+        addVideogameToUser(state, videogamesId) {
+            state.userData.videogamesPurchased = state.userData.videogamesPurchased.concat(videogamesId);
+            localStorage.setItem("user", JSON.stringify(state.userData))
+        },
     },
     actions: {
+        addVideogameToUser({ commit }, videogamesId) {
+            commit("addVideogameToUser", videogamesId)
+        },
+
         async localStorageUser({ commit }) {
             console.log("localStorageUser")
-            // const userName = localStorage.getItem('name');
-            // const userEmail = localStorage.getItem('email');
-            // const userCourses = localStorage.getItem('courses');
-            // const user = {name: userName, email: userEmail, courses: userCourses}
             const user = JSON.parse(localStorage.getItem("user"))
             console.log(user)
             await commit('setUser', user)
@@ -60,7 +81,6 @@ export default {
                     console.log("User: " + user)
                     // localStorage.setItem('name', user.name);
                     // localStorage.setItem('email', user.email);
-                    // localStorage.setItem('courses', user.courses);
                     localStorage.setItem("user", JSON.stringify(user))
                     await commit('setUser', user)
                     console.log(data)
@@ -112,5 +132,6 @@ export default {
             localStorage.removeItem('user');
             await commit('resetUser')
         },
+
     }
 }

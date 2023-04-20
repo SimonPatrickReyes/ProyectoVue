@@ -87,7 +87,7 @@
     justify-content: space-between;
 }
 
-.checkout__buy button {
+.checkout__button {
     background: linear-gradient(to right, #679a20 5%, #477015 95%);
     border-width: 0;
     padding:0.2rem 0.5rem 0.2rem 0.5rem;
@@ -109,4 +109,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.checkout__delete{
+    background: none;
+    border-width: 0;
+    font-weight: 200;
+    color: #6b8db4;
+    font-size: 0.8rem;
+    cursor: pointer;
+    flex: none;
+    margin-top: 1rem;
+    vertical-align: middle;
+    align-self: flex-end;
 }

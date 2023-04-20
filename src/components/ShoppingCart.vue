@@ -7,7 +7,6 @@
 <script>
 
 import {mapState, mapGetters,mapActions} from 'vuex'
-import CheckOutButton from './CheckOutButton.vue';
 
 export default{
     name: "ShoppingCart",
@@ -38,6 +37,5 @@ export default{
             localStorageUser: "localStorageUser"
         }),
     },
-    components: { CheckOutButton }
 }
 </script>

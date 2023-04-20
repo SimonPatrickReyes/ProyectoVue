@@ -20,10 +20,11 @@
 
           <div class="videogame__price">
             <h4>{{ game.price + "€" }}</h4>
-            <button v-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al carrito</button>
+            <span v-if="videogamePurchased(game.id)">Adquirido</span>
+            <button v-else-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al carrito</button>
             <span v-else>En el carrito</span>
           </div>
-
+          
         </div>
       </section>
     </div>
@@ -93,6 +94,9 @@ export default {
     ...mapState('cart', {
       cart: state => state.items,
     }),
+    ...mapGetters('user', {
+      userVideogameId: "userVideogameId"
+    })
   },
   async created() {
     await this.fecthVideogames()
@@ -100,6 +104,9 @@ export default {
   methods: {
     checkVideogameState(videogameId) {
       return this.cart.includes(videogameId)
+    },
+    videogamePurchased(videogameId) {
+      return this.userVideogameId.includes(videogameId)
     },
     replaceCharacters(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).replace('_', ' ');

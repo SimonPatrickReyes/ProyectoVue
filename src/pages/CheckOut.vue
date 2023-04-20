@@ -15,7 +15,6 @@
 
                     </div>
 
-
                     <div class="videogame_price">
                         <h4>{{ game.price + "€" }}</h4>
                     </div>
@@ -32,7 +31,10 @@
                     <p>{{ total }}€</p>
                 </div>
 
-                <CheckOutButton v-bind:user="this.userData" />
+                <button @click="addVideogameToUser(cartData), this.$router.push({ name: 'Tienda' })" class="checkout__button"
+                    v-if="user">Comprar</button>
+                <button @click="this.$router.push({ name: 'login' })" class="checkout__button" v-if="!user">Comprar</button>
+                <button @click="eliminateAllVideogamesInCart(cartData)" class="checkout__delete">Eliminar productos del carrito</button>
             </div>
         </div>
 
@@ -48,7 +50,6 @@
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import CheckOutButton from '../components/CheckOutButton.vue'
 
 export default {
 
@@ -59,7 +60,8 @@ export default {
             count: 'countVideogames'
         }),
         ...mapState('cart', {
-            checkoutStatus: state => state.checkoutStatus
+            checkoutStatus: state => state.checkoutStatus,
+            cartData: state => state.items
         }),
 
         ...mapGetters('cart', {
@@ -67,7 +69,7 @@ export default {
             total: "cartTotal",
         }),
         ...mapState("user", {
-            userData: state => state.userData
+            user: state => state.userData
         }),
     },
 
@@ -102,16 +104,18 @@ export default {
     methods: {
         ...mapActions('cart', {
             checkout: 'checkout',
-            eliminateVideogameInCart: 'eliminateVideogameInCart'
+            eliminateVideogameInCart: 'eliminateVideogameInCart',
+            eliminateAllVideogamesInCart: 'eliminateAllVideogamesInCart',
         }),
         ...mapActions("user", {
-            localStorageUser: "localStorageUser"
+            localStorageUser: "localStorageUser",
+            addVideogameToUser: "addVideogameToUser"
         }),
+
         imgSrc(videogame) {
             return `/src/images/${videogame.img}`
         },
 
     },
-    components: { CheckOutButton }
 }
 </script>

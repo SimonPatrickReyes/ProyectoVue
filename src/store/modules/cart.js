@@ -39,9 +39,12 @@ export default {
         emptyCart(state) {
             state.items = []
         },
-        deleteVideogameInCart(state, videogameId) {
+        eliminateVideogameInCart(state, videogameId) {
             state.items = state.items.filter(videogame => videogame != videogameId);
         },
+        eliminateAllVideogamesInCart(state) {
+            state.items=[];
+        }
     },
 
     actions: {
@@ -56,7 +59,11 @@ export default {
 
         },
         eliminateVideogameInCart({ commit }, videogameId) {
-            commit("deleteVideogameInCart", videogameId)
+            commit("eliminateVideogameInCart", videogameId)
+        },
+
+        eliminateAllVideogamesInCart({commit}){
+            commit("eliminateAllVideogamesInCart")
         },
 
         checkout({ state, commit }) {
