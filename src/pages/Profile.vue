@@ -1,16 +1,17 @@
 <template>
-   <div class="profile">
-      <h1>{{user.name}}</h1>
-      
-      
-      
-   </div>
+    <div class="profile">
+        <!--Profile picture???-->
+        <h1>{{ user.name }}</h1>
+        <div class="profile__videogames">
+        </div>
+        <!--Purchased Games-->
+    </div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex"
 export default {
-   name: "profile",
+    name: "profile",
     data() {
         return {
             isLogin: true,

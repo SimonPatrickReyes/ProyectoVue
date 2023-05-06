@@ -21,10 +21,11 @@
           <div class="videogame__price">
             <h4>{{ game.price + "€" }}</h4>
             <span v-if="videogamePurchased(game.id)">Adquirido</span>
-            <button v-else-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al carrito</button>
+            <button v-else-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al
+              carrito</button>
             <span v-else>En el carrito</span>
           </div>
-          
+
         </div>
       </section>
     </div>
@@ -54,7 +55,8 @@ export default {
       tags: ["Open_World", "Story_Rich", "Adventure", "Western", "Survival",
         "Crafting", "Multiplayer", "PvP", "Sandbox", "Funny", "Moddeable",
         "Mod", "Zombies", "2D", "Pirates", "RPG", "Post-apocalyptic",
-        "Singleplayer", "FPS", "Sci-fi_Space", "Hero_Shooter", "Tactical"],
+        "Singleplayer", "FPS", "Hero_Shooter", "Tactical", "Action",
+        "Sci-fi", "Classic", "Shooter", "Competitive", "Crime", "Farming", "Co-op"],
       activeTags: [],
       message: "",
       showMessage: false

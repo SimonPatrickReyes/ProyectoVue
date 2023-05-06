@@ -31,10 +31,11 @@
                     <p>{{ total }}€</p>
                 </div>
 
-                <button @click="addVideogameToUser(cartData), this.$router.push({ name: 'Tienda' })" class="checkout__button"
-                    v-if="user">Comprar</button>
+                <button @click="addVideogameToUser(cartData),eliminateAllVideogamesInCart(cartData), this.$router.push({ name: 'Tienda' })"
+                    class="checkout__button" v-if="user">Comprar</button>
                 <button @click="this.$router.push({ name: 'login' })" class="checkout__button" v-if="!user">Comprar</button>
-                <button @click="eliminateAllVideogamesInCart(cartData)" class="checkout__delete">Eliminar productos del carrito</button>
+                <button @click="eliminateAllVideogamesInCart(cartData)" class="checkout__delete">Eliminar productos del
+                    carrito</button>
             </div>
         </div>
 

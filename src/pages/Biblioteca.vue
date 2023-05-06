@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="biblioteca">
     <h2>Mis juegos</h2>
-    <div v-for="videogame in userVideogames" :key="videogame.id">
-      <img :src="videogame.img" :alt="videogame.name" />
+    <div v-for="videogame in userVideogames" :key="videogame.id" class="biblioteca__games">
+      <img :src=imgSrc(videogame) alt="videogame.name"/>
       <h3>{{ videogame.name }}</h3>
-      <p>{{ videogame.price }}</p>
     </div>
   </div>
 </template>
@@ -15,14 +14,16 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapGetters('user', {
-            userVideogames: 'userVideogames',
-           
-        }),
-    
-      
-    
+      userVideogames: 'userVideogames',
+    }),
   },
-}
+  methods:{
+    imgSrc(videogame) {
+      return `/src/images/${videogame.img}`
+    }
+  },
+  }
+
 </script>
 
  

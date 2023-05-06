@@ -17,7 +17,8 @@ export default {
             tags: ["Open_World", "Story_Rich", "Adventure", "Western", "Survival",
                 "Crafting", "Multiplayer", "PvP", "Sandbox", "Funny", "Moddeable",
                 "Mod", "Zombies", "2D", "Pirates", "RPG", "Post-apocalyptic",
-                "Singleplayer", "FPS", "Hero_Shooter", "Tactical"],
+                "Singleplayer", "FPS", "Hero_Shooter", "Tactical", "Action",
+                "Sci-fi", "Classic", "Shooter", "Competitive", "Crime", "Farming", "Co-op"],
 
             checkFiltersValues: []
         }

@@ -1,0 +1,13 @@
+.biblioteca{
+    display: block;
+    padding: 2rem;
+}
+
+.biblioteca__games{
+    display: flex;
+    flex-direction: column;
+}
+
+.biblioteca__games img{
+    width: 20%;
+}
