@@ -20,7 +20,7 @@
 
           <div class="videogame__price">
             <h4>{{ game.price + "€" }}</h4>
-            <span v-if="videogamePurchased(game.id)">Adquirido</span>
+            <span v-if="user && videogamePurchased(game.id)">Adquirido</span>
             <button v-else-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al
               carrito</button>
             <span v-else>En el carrito</span>
@@ -98,7 +98,10 @@ export default {
     }),
     ...mapGetters('user', {
       userVideogameId: "userVideogameId"
-    })
+    }),
+    ...mapState('user', {
+      user: state => state.userData
+    }),
   },
   async created() {
     await this.fecthVideogames()
