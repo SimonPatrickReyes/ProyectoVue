@@ -3,11 +3,12 @@
   <main class="tienda__main">
 
     <div class="tienda__div">
+      <SearchBar @check-search-bar="updateDataBySearchBar"></SearchBar>
       <section class="tienda__videogames">
         <div v-for="game in tagVideogames" :key="game.id" class="tienda">
           <div class="tienda__content">
             <router-link class="tienda__router" :to="{ name: 'videogames.show', params: { id: game.id } }">
-              <img :src=imgSrc(game) alt="videogame.name">
+              <img :src=fetchImg(game.img) alt="videogame.name">
 
               <div class="tienda__tittle">
                 <h3>{{ game.name }}</h3>
@@ -19,7 +20,7 @@
           </div>
 
           <div class="videogame__price">
-            <h4>{{ game.price + "€" }}</h4>
+            <h4> {{freeToPlay(game.price)}}</h4>
             <span v-if="user && videogamePurchased(game.id)">Adquirido</span>
             <button v-else-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al
               carrito</button>
@@ -46,6 +47,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import Filter from '../components/Filter.vue'
 import ShoppingCart from '../components/ShoppingCart.vue'
+import SearchBar from '../components/SearchBar.vue'
 
 export default {
   name: "Tienda",
@@ -58,6 +60,7 @@ export default {
         "Singleplayer", "FPS", "Hero_Shooter", "Tactical", "Action",
         "Sci-fi", "Classic", "Shooter", "Competitive", "Crime", "Farming", "Co-op"],
       activeTags: [],
+      search:"",
       message: "",
       showMessage: false
     }
@@ -67,17 +70,16 @@ export default {
     almacenadas en el array activeTags, de modo que se filtran los videojuegos por las etiquetas activas.*/
     tagVideogames() {
       const videogames = this.$store.getters["videogames/videogames"]
+      var filteredVideogames = [];
       if (videogames) {
+        
         if (this.activeTags.length === 0) {
-          console.log("No filters")
-          return videogames
+          filteredVideogames=videogames
         }
         else {
-          const filteredVideogames = [];
           videogames.forEach(videogame =>
             this.tags.forEach(tag => {
               if (this.activeTags.includes(tag) && videogame.tags.includes(tag)) {
-                console.log(videogame.name + ' ' + tag)
                 if (!filteredVideogames.includes(videogame)) {
                   filteredVideogames.push(videogame)
                 }
@@ -85,13 +87,22 @@ export default {
             }
             )
           )
+        }
+        if (this.search!="") {
+         
+          return filteredVideogames.filter(videogame => videogame.name.toLowerCase().includes(this.search.toLowerCase()));
+        }
+        else{
           return filteredVideogames
         }
+
+
       }
       else { return ' ' }
     },
     ...mapState('videogames', {
       games: state => state.items,
+      imageURL: state => state.imageURL
     }),
     ...mapState('cart', {
       cart: state => state.items,
@@ -119,14 +130,26 @@ export default {
 
     updateDataByFilter(udpateOptions) {
       this.activeTags = udpateOptions
-      console.log("activeTags" + this.activeTags)
     },
 
+    updateDataBySearchBar(udpateOptions){
+      this.search=udpateOptions
+    },
+    fetchImg(image){
+      return this.imageURL+image
+    },
     addVideogameMessage(game) {
       this.addVideogameToCart(game),
         this.message = game.name + " añadido al carrito"
       this.showMessage = true,
         setTimeout(() => this.showMessage = false, 100000)
+    },
+
+    freeToPlay(price){
+        if (price==0) {
+          return "Free to play"
+        }
+        else return price+" €"
     },
 
     // async fecthAPI(){
@@ -147,6 +170,6 @@ export default {
       return `/src/images/${videogame.img}`
     }
   },
-  components: { Filter, ShoppingCart },
+  components: { Filter, ShoppingCart, SearchBar },
 }
 </script>

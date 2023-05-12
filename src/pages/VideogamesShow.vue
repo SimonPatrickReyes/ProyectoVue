@@ -6,14 +6,14 @@
                 <div class="videogame__carousel">
                     <video src="../images/redDeadRedemption.webm" controls autoplay muted></video>
                     <div class="videogame__images">
-                        <img src="../images/redDeadRedemption/paisaje1.jpg" alt="">
-                        <img src="../images/redDeadRedemption/paisaje2.jpg" alt="">
-                        <img src="../images/redDeadRedemption/paisaje3.jpg" alt="">
-                        <img src="../images/redDeadRedemption/paisaje4.jpg" alt="">
+                        <img :src=fetchImg(moreImg(videogame.img,1)) alt="">
+                        <img :src=fetchImg(moreImg(videogame.img,2)) alt="">
+                        <img :src=fetchImg(moreImg(videogame.img,3)) alt="">
+                        <img :src=fetchImg(moreImg(videogame.img,4)) alt="">
                     </div>
                 </div>
                 <div class="videogame__cover">
-                    <img :src=imgPath+videogame.img alt="">
+                    <img :src=fetchImg(videogame.img) alt="videogame.name">
                     <p>{{ videogame.description }}</p>
                 </div>
             </div>
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapState} from 'vuex'
+
 export default {
     data() {
         return {
@@ -38,6 +40,15 @@ export default {
             const res = await fetch('http://localhost:3001/api/v1/videogames')
             const data = Object.values(await res.json())
             return data
+        },
+        fetchImg(image) {
+            return this.imageURL + image
+        },
+        imgSrc(videogame) {
+            return `/src/images/${videogame.img}`
+        },
+        moreImg(img,n){
+            return img.replace('.',`_${n}.`)
         }
     },
     computed: {
@@ -46,7 +57,11 @@ export default {
         },
         videogame() {
             return this.games.find(videogame => videogame.id === this.videogameId)
-        }
+        },
+        ...mapState('videogames', {
+            games: state => state.items,
+            imageURL: state => state.imageURL
+        }),
     }
 }
 

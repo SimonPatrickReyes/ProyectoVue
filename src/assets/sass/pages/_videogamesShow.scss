@@ -1,4 +1,4 @@
-.videogame__section{
+.videogame__section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,14 +6,14 @@
     width: 100%;
 }
 
-.videogame__section h1{
+.videogame__section h1 {
     align-self: flex-start;
     margin-bottom: 0.8rem;
     font-size: 1.5rem;
 }
 
 
-.videogame__article{
+.videogame__article {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,37 +22,37 @@
     width: 70%;
 }
 
-.videogame__content{
+.videogame__content {
     display: flex;
     flex-direction: row;
-    column-gap:1rem;
+    column-gap: 1rem;
 }
 
-.videogame__carousel{
+.videogame__carousel {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 35rem;
 }
 
-.videogame__carousel video{
+.videogame__carousel video {
     display: flex;
     width: 100%;
     align-self: flex-start;
 }
 
-.videogame__images{
+.videogame__images {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    width: 100%;
+    width: fit-content;
 }
 
-.videogame__images img{
-   width: fit-content;
+.videogame__images img {
+    width: 25%;
+    height: fit-content;
 }
 
-.videogame__cover{
+.videogame__cover {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,13 +60,13 @@
     width: 30%;
 }
 
-.videogame__cover p{
+.videogame__cover p {
     margin-top: 1rem;
-    width:fit-content;
+    width: fit-content;
     font-size: 1rem;
 }
 
-.videogame__cover img{
+.videogame__cover img {
     width: fit-content;
     align-self: flex-start;
 }

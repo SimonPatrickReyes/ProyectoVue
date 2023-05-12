@@ -3,7 +3,6 @@
     <div class="nav__links">
     <img src="../images/logo.png" alt="logo" class="nav__logo">
     <router-link to="/">Tienda</router-link>    
-    <router-link to="/novedades">Novedades</router-link>    
     <router-link v-if="user" to="/biblioteca">Biblioteca</router-link>    
 </div>
 

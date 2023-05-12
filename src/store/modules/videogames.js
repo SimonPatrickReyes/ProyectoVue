@@ -1,7 +1,8 @@
 export default{
     namespaced:true,
     state:{
-        items:[]
+        items:[],
+        imageURL: "http://localhost:3001/api/v1/images/"
     },
     getters:{
         videogames(state){
@@ -32,6 +33,6 @@ export default{
             const res = await fetch('http://localhost:3001/api/v1/videogames')
             const data = Object.values(await res.json())
             commit('setVideogames',data)
-        }
+        },
     }
 }
