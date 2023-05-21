@@ -25,7 +25,7 @@ export default {
         },
 
         cartTotal(state, getters, rootState, rootGetters) {
-            return rootGetters["cart/cartVideogames"].reduce((total, videogame) => total + videogame.price, 0)
+            return rootGetters["cart/cartVideogames"].reduce((total, videogame) => total + videogame.price, 0).toFixed(2)
         },
 
     },

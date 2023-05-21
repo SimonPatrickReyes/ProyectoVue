@@ -2,7 +2,7 @@
     <div class="checkout">
         <h1 class="checkout__h1">Carro de la compra</h1>
         <div v-if="count != 0" class="checkout__section">
-            <div v-for="game in videogames" :key="game.id" class="checkout__window">
+            <div v-if="videogames" v-for="game in videogames" class="checkout__window">
                 <div class="checkout__videogame">
                     <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
                         <img :src=imgSrc(game) alt="videogame.name">
@@ -31,7 +31,8 @@
                     <p>{{ total }}€</p>
                 </div>
 
-                <button @click="addVideogameToUser(cartData),eliminateAllVideogamesInCart(cartData), this.$router.push({ name: 'Tienda' })"
+                <button
+                    @click="addVideogameToUser(cartData), eliminateAllVideogamesInCart(cartData), this.$router.push({ name: 'Tienda' })"
                     class="checkout__button" v-if="user">Comprar</button>
                 <button @click="this.$router.push({ name: 'login' })" class="checkout__button" v-if="!user">Comprar</button>
                 <button @click="eliminateAllVideogamesInCart(cartData)" class="checkout__delete">Eliminar productos del
@@ -75,33 +76,11 @@ export default {
     },
 
     created() {
+        // recupera al usuario del localStorage
         this.localStorageUser();
+        this.fecthVideogames()
     },
 
-    getters: {
-        countVideogames(state) {
-            return state.items.count()
-
-        },
-        cartVideogames(state, getters, rootState, rootGetters) {
-            return state.items.map(cartItem => {
-                console.log(cartItem)
-                console.log(rootState.videogames.items)
-                const videogame = rootState.videogames.items.find(videogame => videogame.id === cartItem)
-                console.log(videogame)
-                return {
-                    img: videogame.img,
-                    name: videogame.name,
-                    price: videogame.price,
-                }
-            })
-        },
-
-        cartTotal(state, getters, rootState, rootGetters) {
-            return rootGetters["cart/cartVideogames"].reduce((total, videogame) => total + videogame.price, 0)
-        },
-
-    },
     methods: {
         ...mapActions('cart', {
             checkout: 'checkout',
@@ -116,6 +95,9 @@ export default {
         imgSrc(videogame) {
             return `/src/images/${videogame.img}`
         },
+        ...mapActions('videogames', {
+            fecthVideogames: "fecthVideogames",
+        }),
 
     },
 }

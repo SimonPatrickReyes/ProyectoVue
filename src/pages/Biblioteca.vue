@@ -1,8 +1,8 @@
 <template>
   <div class="biblioteca">
     <h2>Mis juegos</h2>
-    <div v-for="videogame in userVideogames" :key="videogame.id" class="biblioteca__games">
-      <img :src=imgSrc(videogame) alt="videogame.name"/>
+    <div v-if="userVideogames" v-for="videogame in userVideogames" :key="videogame.id" class="biblioteca__games">
+      <img :src=imgSrc(videogame) alt="videogame.name" />
       <h3>{{ videogame.name }}</h3>
     </div>
   </div>
@@ -17,12 +17,22 @@ export default {
       userVideogames: 'userVideogames',
     }),
   },
-  methods:{
+  created() {
+    this.localStorageUser();
+    this.fecthVideogames()
+  },
+  methods: {
+    ...mapActions('videogames', {
+      fecthVideogames: "fecthVideogames",
+    }),
     imgSrc(videogame) {
       return `/src/images/${videogame.img}`
-    }
+    },
+    ...mapActions("user", {
+      localStorageUser: "localStorageUser"
+    }),
   },
-  }
+}
 
 </script>
 

@@ -14,6 +14,7 @@ export default {
     name: "Filter", emits: ["check-filter"],
     data() {
         return {
+            //Se crea la array con los filtros existente
             tags: ["Open_World", "Story_Rich", "Adventure", "Western", "Survival",
                 "Crafting", "Multiplayer", "PvP", "Sandbox", "Funny", "Moddeable",
                 "Mod", "Zombies", "2D", "Pirates", "RPG", "Post-apocalyptic",

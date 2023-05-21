@@ -8,17 +8,22 @@ export default {
     },
     getters: {
         userVideogames(state, getters, rootState, rootGetters) {
+            
             return state.userData.videogamesPurchased.map(userVideogame => {
-                console.log(userVideogame)
+                console.log("userVideogame")
                 console.log(rootState.videogames.items)
                 const videogame = rootState.videogames.items.find(videogame => videogame.id === userVideogame)
+                console.log("Videogame purchased")
                 console.log(videogame)
-                return {
+                if(videogame){
+                    return {
                     id: videogame.id,
                     img: videogame.img,
                     name: videogame.name,
                     price: videogame.price,
                 }
+                }
+                
             })
         },
         userVideogameId(state){
@@ -45,14 +50,49 @@ export default {
         },
         addVideogameToUser(state, videogamesId) {
             state.userData.videogamesPurchased = state.userData.videogamesPurchased.concat(videogamesId);
-            localStorage.setItem("user", JSON.stringify(state.userData))
+            localStorage.setItem("user", JSON.stringify(state.userData));
         },
     },
     actions: {
-        addVideogameToUser({ commit }, videogamesId) {
+        async addVideogameToUser({ state, getters, commit, rootState, rootGetters }, videogamesId) {
             commit("addVideogameToUser", videogamesId)
+            console.log("updateUser")
+            const res = await fetch('http://localhost:3001/api/v1/users/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body:  JSON.stringify({newUser: state.userData})
+                })
+                if (res.status !== 200) {
+                    console.log("No es posible actualizar el usuario")
+                }
+                else {
+                    console.log("UpdateUser con éxito")
+                    localStorage.setItem("user", JSON.stringify(state.userData))
+                    await commit('setUser', state.userData)
+                }
         },
-
+        async updateUser({ state, getters, commit, rootState, rootGetters }){
+            console.log("updateUser")
+            const res = await fetch('http://localhost:3001/api/v1/users/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body:  JSON.stringify(state.userData)
+                })
+                if (res.status !== 200) {
+                    console.log("No es posible actualizar el usuario")
+                }
+                else {
+                    console.log("UpdateUser con éxito")
+                    localStorage.setItem("user", JSON.stringify(state.userData))
+                    await commit('setUser', user)
+                }
+        },
         async localStorageUser({ commit }) {
             console.log("localStorageUser")
             const user = JSON.parse(localStorage.getItem("user"))
@@ -127,7 +167,7 @@ export default {
                 console.log(data)
             }
             catch (error) {
-                //console.error(error.message);
+                console.error(error.message);
             }
             localStorage.removeItem('user');
             await commit('resetUser')

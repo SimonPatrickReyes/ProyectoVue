@@ -1,6 +1,6 @@
 <template>
     <div class="searchBar">
-        <input type="text" v-model="search">
+        <input type="text" v-model="search" placeholder="Search...">
     </div>
 </template>
 <script>
@@ -13,6 +13,7 @@ export default {
         }
     },
 
+    //comparacion
     watch:{
         search(newSearch,oldSearch){
             this.$emit("check-searchBar", newSearch)

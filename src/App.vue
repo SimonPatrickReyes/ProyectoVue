@@ -45,11 +45,11 @@ export default {
 <template>
   <Header />
   <!--<component :is="currentView" />-->
-  <div>
+  <main>
       <VideogameList/>
       
       <RouterView :key="$route.path"/>
-  </div>
+  </main>
   <Footer />
 </template>
 

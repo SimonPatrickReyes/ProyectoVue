@@ -29,9 +29,11 @@ label {
 }
 
 input[type="email"],
-input[type="username"],
-input[type="password"] {
+input[type="text"],
+input[type="password"],
+input[type="date"] {
     width: 100%;
+    font-weight: 500;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -40,13 +42,18 @@ input[type="password"] {
     color: #333;
 }
 
+input[type="date"]{
+    cursor: pointer;
+}
+
 .checkbox label {
     font-weight: normal;
 }
 
 .checkbox {
     display: flex;
-    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
 
 }
 

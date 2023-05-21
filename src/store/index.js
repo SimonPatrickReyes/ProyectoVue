@@ -1,33 +1,3 @@
-// import Vuex from 'vuex'
-// import Vue from 'vue'
-// import cart from './modules/cart'
-// import videogames from './modules/videogames'
-
-// Vue.use(Vuex)
-
-// export default new Vuex.Store({
-//     modules: {
-//         cart,
-//         videogames
-//     },
-
-//     state: {
-
-//     },
-
-//     getters: {
-
-//     },
-    
-//     actions: {
-
-//     },
-
-//     mutations: {
-
-//     }
-// })
-
 import { createStore } from 'vuex'
 import cart from './modules/cart'
 import videogames from './modules/videogames'
