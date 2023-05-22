@@ -1,6 +1,12 @@
-.biblioteca{
+.biblioteca__main{
     display: block;
     padding: 2rem;
+}
+
+.biblioteca{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
 }
 
 .biblioteca__games{
@@ -8,6 +14,20 @@
     flex-direction: column;
 }
 
+.biblioteca__games:hover{
+    filter: brightness(20%);
+    cursor: pointer;
+}
+
+.biblioteca__router{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-self: center;
+    margin: 0 auto;
+}
+
 .biblioteca__games img{
-    width: 20%;
+    width: 90%;
+    background-color: #223344d7;
 }

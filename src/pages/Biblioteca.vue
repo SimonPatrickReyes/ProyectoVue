@@ -1,11 +1,13 @@
 <template>
-  <div class="biblioteca">
+  <main class="biblioteca__main">
     <h2>Mis juegos</h2>
-    <div v-if="userVideogames" v-for="videogame in userVideogames" :key="videogame.id" class="biblioteca__games">
-      <img :src=imgSrc(videogame) alt="videogame.name" />
-      <h3>{{ videogame.name }}</h3>
+    <div class="biblioteca">
+      <div v-if="userVideogames" v-for="videogame in userVideogames" :key="videogame.id" class="biblioteca__games">
+        <img :src=imgSrc(videogame) alt="videogame.name" />
+        <router-link class="biblioteca__router" :to="{ name: 'videogames.show', params: { id: videogame.id } }">Visitar página</router-link>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

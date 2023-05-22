@@ -151,15 +151,6 @@ export default {
         }
         else return price+" €"
     },
-
-    // async fecthAPI(){
-    //     console.log("fetch")
-    //     const res = await fetch('http://localhost:3001/api/v1/videogames')
-    //         const data = await res.json()
-    //         console.log(data)
-    //         return data
-    // },
-
     ...mapActions('videogames', {
       fecthVideogames: "fecthVideogames",
     }),
