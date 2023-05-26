@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         async fecthAPI() {
-            const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/videogames')
+            const res = await fetch("https://apiexpress-production-51d9.up.railway.app/api/v1/videogames")
             const data = Object.values(await res.json())
             return data
         },
