@@ -30,7 +30,7 @@ export default {
     name: "Navegation",
     methods: {
         async fetchVideogame() {
-            const res = await fetch("http://localhost:3001/api/v1/videogames");
+            const res = await fetch("https://apiexpress-production-51d9.up.railway.app/api/v1/videogames");
             const gamesData = Object.values(await res.json());
             return gamesData;
         },

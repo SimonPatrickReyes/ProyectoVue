@@ -31,7 +31,7 @@ export default {
     }),
     ...mapActions(['leerToken']),
     async fecthAPI() {
-      const res = await fetch('http://localhost:3001/api/v1/videogames')
+      const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/videogames')
       const data = await res.json()
       return data
     },

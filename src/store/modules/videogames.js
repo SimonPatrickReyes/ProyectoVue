@@ -2,7 +2,7 @@ export default{
     namespaced:true,
     state:{
         items:[],
-        imageURL: "http://localhost:3001/api/v1/images/"
+        imageURL: "https://apiexpress-production-51d9.up.railway.app/api/v1/images/"
     },
     getters:{
         videogames(state){
@@ -30,7 +30,7 @@ export default{
     },
     actions:{
         async fecthVideogames({commit}){ 
-            const res = await fetch('http://localhost:3001/api/v1/videogames')
+            const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/videogames')
             const data = Object.values(await res.json())
             commit('setVideogames',data)
         },

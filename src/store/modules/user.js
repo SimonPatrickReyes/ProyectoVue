@@ -57,7 +57,7 @@ export default {
         async addVideogameToUser({ state, getters, commit, rootState, rootGetters }, videogamesId) {
             commit("addVideogameToUser", videogamesId)
             console.log("updateUser")
-            const res = await fetch('http://localhost:3001/api/v1/users/update', {
+            const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/users/update', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default {
         },
         async updateUser({ state, getters, commit, rootState, rootGetters }){
             console.log("updateUser")
-            const res = await fetch('http://localhost:3001/api/v1/users/update', {
+            const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/users/update', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default {
         },
         async doLogin({ commit }, { inputEmail, inputPassword }) {
             try {
-                const res = await fetch('http://localhost:3001/api/v1/users/login', {
+                const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/users/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ export default {
         },
         async doRegister({ commit }, { inputName, inputEmail, inputPassword }) {
             try {
-                const res = await fetch('http://localhost:3001/api/v1/users/signup', {
+                const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/users/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ export default {
 
         async logout({ commit }) {
             try {
-                const res = await fetch('http://localhost:3001/api/v1/users/logout', {
+                const res = await fetch('https://apiexpress-production-51d9.up.railway.app/api/v1/users/logout', {
                     method: 'DELETE',
                     credentials: 'include',
                 })
