@@ -5,7 +5,7 @@
             <div v-if="videogames" v-for="game in videogames" class="checkout__window">
                 <div class="checkout__videogame">
                     <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
-                        <img :src=imgSrc(game) alt="videogame.name">
+                        <img :src=fetchImg(game) alt="videogame.name">
                     </router-link>
                     <div>
                         <h3>{{ game.name }}</h3>
@@ -65,7 +65,10 @@ export default {
             checkoutStatus: state => state.checkoutStatus,
             cartData: state => state.items
         }),
-
+        ...mapState('videogames', {
+            videogames: state => state.items,
+            imageURL: state => state.imageURL
+        }),
         ...mapGetters('cart', {
             videogames: "cartVideogames",
             total: "cartTotal",
@@ -91,9 +94,8 @@ export default {
             localStorageUser: "localStorageUser",
             addVideogameToUser: "addVideogameToUser"
         }),
-
-        imgSrc(videogame) {
-            return `/src/images/${videogame.img}`
+        fetchImg(image) {
+            return this.imageURL + image
         },
         ...mapActions('videogames', {
             fecthVideogames: "fecthVideogames",
