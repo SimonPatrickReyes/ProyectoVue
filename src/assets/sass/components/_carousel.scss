@@ -1,0 +1,45 @@
+.carousel {
+    position: relative;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.prev{
+    position: relative;
+    background: linear-gradient(-90deg,  rgba(16, 23, 53, 0) 0%, rgb(32, 40, 60) 100%);
+    flex: none;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.next{
+    position: relative;
+    background: linear-gradient(90deg, rgba(16, 23, 53, 0) 0%, rgb(32, 40, 60) 100%);
+    flex: none;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.carousel__buttons{
+    opacity: 0;
+    display: flex;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    border-width: 0;
+}
+
+.carousel__buttons:hover{
+    opacity: 100%;
+    transition: 0.3s;
+}
+
+

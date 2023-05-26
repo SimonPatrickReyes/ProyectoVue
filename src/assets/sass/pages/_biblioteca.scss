@@ -6,27 +6,39 @@
 .biblioteca{
     margin-top: 2rem;
     display: flex;
+    gap: 1rem;
     flex-direction: row;
 }
 
 .biblioteca__games{
     display: flex;
     flex-direction: column;
-}
-
-.biblioteca__games:hover{
-    filter: brightness(20%);
-    cursor: pointer;
+    position: relative;
 }
 
 .biblioteca__router{
     display: flex;
-    text-align: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
     justify-content: center;
     position: absolute;
+    filter: opacity(0%);
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.4rem;
 }
 
+.biblioteca__router:hover{
+    filter: opacity(100%);
+    background-color: rgba(0, 0, 0, 0.737);
+    cursor: pointer;
+
+}
+
+
 .biblioteca__games img{
-    width: 90%;
+    width: 100%;
     background-color: #223344d7;
 }

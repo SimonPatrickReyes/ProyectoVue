@@ -142,7 +142,7 @@ export default {
       this.addVideogameToCart(game),
         this.message = game.name + " añadido al carrito"
       this.showMessage = true,
-        setTimeout(() => this.showMessage = false, 100000)
+        setTimeout(() => this.showMessage = false, 3000)
     },
 
     freeToPlay(price){

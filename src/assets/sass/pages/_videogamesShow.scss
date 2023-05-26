@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: row;
     width: fit-content;
+    gap:0.3rem
 }
 
 .videogame__images img {
@@ -57,11 +58,12 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    width: 30%;
+    width: 35%;
+    background-color: #13202ddc;
+    
 }
 
 .videogame__cover p {
-    margin-top: 1rem;
     width: fit-content;
     font-size: 1rem;
 }
@@ -69,4 +71,102 @@
 .videogame__cover img {
     width: fit-content;
     align-self: flex-start;
+}
+
+.videogame__description span{
+    background: linear-gradient(to right, #679a2094 5%, #47701594 95%);
+    border-width: 0;
+    border-radius: 0.3rem;
+    margin-right: 0.1rem;
+    font-weight: 600;
+    height: 2rem;
+    padding:0rem 0.5rem 0rem 0.5rem;
+    color: #eee;
+    cursor: pointer;
+    flex: none;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.videogame__description{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: space-between;
+}
+.videogame__add{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content:end;
+    flex-direction: row;
+    
+    height: fit-content;
+}
+
+.videogame__add span{
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    
+}
+
+.videogame__addContent{
+    padding-left: 0.4rem;
+    column-gap: 0.4rem;
+    display: flex;
+    align-items: center;
+    background-color: #090f15d7;
+    border-radius: 0.5rem;
+    height: min-content;
+}
+
+.videogame__button{
+    background: linear-gradient(to right, #679a20 5%, #477015 95%);
+    border-width: 0;
+    border-radius: 0.3rem;
+    margin-right: 0.1rem;
+    font-weight: 600;
+    height: 2.5rem;
+    color: #eee;
+    cursor: pointer;
+    flex: none;
+}
+
+.videogame__button:hover {
+    background: linear-gradient(to right, #89c536 5%, #6fad23 95%);
+}
+
+.videogame__message{
+    background-color: #112538d4;
+    color: #eee;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 1rem;
+    width: 30%;
+    position: fixed;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.videogame__message button{
+    position: absolute;
+    background: none;
+    color: #eee;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.videogame__message button:hover{
+filter: blur(0.1rem);
 }

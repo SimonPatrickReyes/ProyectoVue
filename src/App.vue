@@ -43,14 +43,17 @@ export default {
 </script>
 
 <template>
+
   <Header />
   <!--<component :is="currentView" />-->
-  <main>
+  
+  <main><div class="background"></div>
       <VideogameList/>
       
       <RouterView :key="$route.path"/>
   </main>
   <Footer />
+  
 </template>
 
 <style>

@@ -2,8 +2,9 @@
     <div class="filters">
         <ul class="filters__ul">
             <p class="filters__p">Filtrar por categoria</p>
+            <button v-if="checkFiltersValues.length!=0" @click="resetFilters" class="filters__button">Resetear Filtros</button>
             <li v-for="tag in tags" class="filters__li">
-                <input type="checkbox" :name=tag :id=tag @change="checkFilter($event)">
+                <input class="input" type="checkbox" :name=tag :id=tag @change="checkFilter($event)">
                 <label :for=tag>{{ replaceCharacters(tag) }}</label>
             </li>
         </ul>
@@ -36,6 +37,16 @@ export default {
             }
             this.$emit("check-filter", this.checkFiltersValues)
             console.log(this.checkFiltersValues)
+        },
+        resetFilters(){
+            this.checkFiltersValues=[];
+            console.log(document.querySelectorAll("input"))
+            const inputs=document.querySelectorAll("input[type=checkbox]")
+            console.log(inputs)
+            inputs.forEach(input => {
+                input.checked=false
+            }); 
+            this.$emit("check-filter", this.checkFiltersValues)
         }
     }
 }

@@ -76,6 +76,21 @@
     text-align: center;
 }
 
+.filters__button{
+    background-color: #32597d;
+    border-width: 0;
+    font-weight: 600;
+    color: #eee;
+    cursor: pointer;
+    flex: none;
+}
+
+.filters__button:hover{
+    background-color: #6aa3d9;
+    
+}
+
+
 label {
     margin-bottom: 0;
 }

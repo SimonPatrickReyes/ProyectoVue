@@ -1,10 +1,11 @@
 .checkout {
     display: flex;
+    align-items: center;
     flex-direction: column;
     padding: 1rem;
 }
 .checkout__section{
-    width: 70%;
+    width: 60%;
 }
 
 
@@ -27,7 +28,7 @@
 
 .checkout__alert {
     background: linear-gradient(to right, #9c6309 5%, #dd770b 95%);
-    width: 50%;
+    width: 100%;
     border-width: 0;
     border-radius: 0.3rem;
     font-weight: 600;
@@ -37,13 +38,10 @@
     display: flex;
     flex-wrap:unset;
     flex-direction: column;
-    align-self: center;
     align-items: center;
-    align-content: center;
-    vertical-align: middle;
     text-align: center;
     margin:2rem 0rem 2rem 0rem;
-    padding:1.3rem;
+    padding: 1.3em;
 }
 
 .checkout__buttons {
