@@ -5,7 +5,7 @@
             <div v-if="videogames" v-for="game in videogames" class="checkout__window">
                 <div class="checkout__videogame">
                     <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
-                        <img :src=fetchImg(game) alt="videogame.name">
+                        <img :src=fetchImg(game.image) alt="videogame.name">
                     </router-link>
                     <div>
                         <h3>{{ game.name }}</h3>
