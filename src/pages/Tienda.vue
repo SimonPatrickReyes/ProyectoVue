@@ -20,7 +20,7 @@
           </div>
 
           <div class="videogame__price">
-            <h4> {{freeToPlay(game.price)}}</h4>
+            <h4> {{ freeToPlay(game.price) }}</h4>
             <span v-if="user && videogamePurchased(game.id)">Adquirido</span>
             <button v-else-if="!checkVideogameState(game.id)" @click="addVideogameMessage(game)">Añadir al
               carrito</button>
@@ -60,7 +60,7 @@ export default {
         "Singleplayer", "FPS", "Hero_Shooter", "Tactical", "Action",
         "Sci-fi", "Classic", "Shooter", "Competitive", "Crime", "Farming", "Co-op"],
       activeTags: [],
-      search:"",
+      search: "",
       message: "",
       showMessage: false
     }
@@ -72,9 +72,9 @@ export default {
       const videogames = this.$store.getters["videogames/videogames"]
       var filteredVideogames = [];
       if (videogames) {
-        
+
         if (this.activeTags.length === 0) {
-          filteredVideogames=videogames
+          filteredVideogames = videogames
         }
         else {
           videogames.forEach(videogame =>
@@ -88,11 +88,11 @@ export default {
             )
           )
         }
-        if (this.search!="") {
-         
+        if (this.search != "") {
+
           return filteredVideogames.filter(videogame => videogame.name.toLowerCase().includes(this.search.toLowerCase()));
         }
-        else{
+        else {
           return filteredVideogames
         }
 
@@ -132,11 +132,11 @@ export default {
       this.activeTags = udpateOptions
     },
 
-    updateDataBySearchBar(udpateOptions){
-      this.search=udpateOptions
+    updateDataBySearchBar(udpateOptions) {
+      this.search = udpateOptions
     },
-    fetchImg(image){
-      return this.imageURL+image
+    fetchImg(image) {
+      return this.imageURL + image
     },
     addVideogameMessage(game) {
       this.addVideogameToCart(game),
@@ -145,11 +145,11 @@ export default {
         setTimeout(() => this.showMessage = false, 3000)
     },
 
-    freeToPlay(price){
-        if (price==0) {
-          return "Free to play"
-        }
-        else return price+" €"
+    freeToPlay(price) {
+      if (price == 0) {
+        return "Free to play"
+      }
+      else return price + " €"
     },
     ...mapActions('videogames', {
       fecthVideogames: "fecthVideogames",

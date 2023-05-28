@@ -2,14 +2,13 @@
     <div class="profile">
         <!--Profile picture???-->
         <h1>{{ user.name }}</h1>
-        <div class="profile__videogames">
-        </div>
+        <router-link :to="{ name: 'Biblioteca' }" class="profile_button">Ver tus juegos</router-link>
         <!--Purchased Games-->
     </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex"
+import { mapState, mapActions } from "vuex"
 export default {
     name: "profile",
     data() {

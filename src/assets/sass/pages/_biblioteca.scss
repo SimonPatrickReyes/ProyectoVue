@@ -1,19 +1,24 @@
 .biblioteca__main{
     display: block;
     padding: 2rem;
+    
 }
 
 .biblioteca{
     margin-top: 2rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-auto-flow: row-dense;
     gap: 1rem;
     flex-direction: row;
+    
 }
 
 .biblioteca__games{
     display: flex;
     flex-direction: column;
     position: relative;
+    
 }
 
 .biblioteca__router{

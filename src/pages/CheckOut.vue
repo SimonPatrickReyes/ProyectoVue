@@ -7,7 +7,7 @@
                     <router-link :to="{ name: 'videogames.show', params: { id: game.id } }">
                         <img :src=fetchImg(game.img) alt="videogame.name">
                     </router-link>
-                    <div>
+                    <div class="videogame_info">
                         <h3>{{ game.name }}</h3>
                         <ul>
                             <li v-for="tag in game.tags"><a href="">{{ replaceCharacters(tag) }}</a></li>

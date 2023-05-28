@@ -1,0 +1,27 @@
+.profile{
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.profile_button{
+    background: linear-gradient(to right, #679a20 5%, #477015 95%);
+    border-width: 0;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    border-radius: 0.2rem;
+    margin-right: 0.1rem;
+    font-weight: 600;
+    height: fit-content;
+    width: fit-content;
+    color: #eee;
+    cursor: pointer;
+    flex: none;
+    font-size: 1.4rem;
+    text-decoration: none;
+    margin-top: 0.8rem;
+    vertical-align: middle;
+    align-self: flex-end;
+}
+
+.profile_button:hover{
+    background: linear-gradient(to right, #89c536 5%, #6fad23 95%);
+}
